@@ -7,4 +7,12 @@
     <string name="resetpw"><u>Reset</u></string>
     <string name="notuser">Not Yet an User?</string>
     <string name="register"><u>Register</u></string>
+    <string name="regFName">First Name</string>
+    <string name="regLName">Last Name</string>
+    <string name="regEmail">Email</string>
+    <string name="regPw">Password</string>
+    <string name="regRepeatPw">Repeat</string>
+    <string name="regSecurityQuestion">Security Question</string>
+    <string name="regSecurityAnswer">Answer</string>
+    <string name="savebtn">Save Profile</string>
 </resources>
