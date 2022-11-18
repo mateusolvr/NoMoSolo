@@ -15,5 +15,50 @@
     <string name="regRepeatPw">Repeat Password</string>
     <string name="regSecurityQuestion">Enter Security Question</string>
     <string name="regSecurityAnswer">Enter Answer</string>
+    <string name="registerBtn">Register</string>
     <string name="savebtn">Save Profile</string>
+    <string name="bio_header">User Bio:</string>
+    <string name="bio_hint">Tell other Solos about yourself!</string>
+    <string name="instruments_spinner">Instruments</string>
+    <string name="skills_spinner">Skill Level</string>
+    <string name="genre1_spinner">Genre 1</string>
+    <string name="genre2_spinner">Genre 2</string>
+    <string name="seeking_instrument_spinner">Seeking Instrument</string>
+    <string name="seeking_skill_spinner">Seeking Skill Level</string>
+    <string name="seeking_genre_spinner">Seeking Genre</string>
+
+
+    <string-array name="instruments">
+        <item>Guitar</item>
+        <item>Bass Guitar</item>
+        <item>Keyboard</item>
+        <item>Drums/Percussive</item>
+        <item>Vocal</item>
+        <item>Violin</item>
+        <item>Saxophone</item>
+    </string-array>
+
+    <string-array name="skills">
+        <item>Beginner Enthusiast</item>
+        <item>Intermediate Enthusiast</item>
+        <item>Advanced Enthusiast</item>
+        <item>Professional Musician</item>
+    </string-array>
+
+    <string-array name="genre">
+        <item>Pop</item>
+        <item>Blues</item>
+        <item>HipHop/Rap</item>
+        <item>RnB</item>
+        <item>Soul</item>
+        <item>Jazz</item>
+        <item>Rock</item>
+        <item>Metal</item>
+        <item>Funk</item>
+        <item>Classical</item>
+        <item>Country</item>
+        <item>Reggae</item>
+        <item>World</item>
+        <item>Others</item>
+    </string-array>
 </resources>

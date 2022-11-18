@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10sp"
+    android:background="@color/beige_1"
+    android:backgroundTint="#F3EDEB"
+    android:backgroundTintMode="src_over"
+    android:foregroundTint="#F3EDEB"
+    android:foregroundTintMode="screen"
+    android:orientation="vertical"
+    android:overScrollMode="ifContentScrolls"
+    android:paddingLeft="30sp"
+    android:paddingTop="30sp"
+    android:paddingRight="30sp"
+    android:scrollbarSize="0dp"
+    android:scrollbarStyle="outsideOverlay"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_marginBottom="20sp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/logo" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/bioHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bio_header"
+                    android:textSize="15sp"/>
+
+                <EditText
+                    android:id="@+id/userBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/bio_hint"
+                    android:inputType="textMultiLine"
+                    android:minHeight="48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/instrumentsSpinnerHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/instruments_spinner"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/userInstrumentSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:contentDescription="Instruments"
+                    android:entries="@array/instruments" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/skillsSpinnerHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/skills_spinner"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/userSkillSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:contentDescription="User skill level"
+                    android:entries="@array/skills"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/Genre1SpinnerHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genre1_spinner"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/userGenre1Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:contentDescription="User Genre 1"
+                    android:entries="@array/genre"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/Genre2SpinnerHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genre2_spinner"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/userGenre2Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:contentDescription="User Genre 2"
+                    android:entries="@array/genre"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/SeekingInstrumentSpinnerHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seeking_instrument_spinner"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/seekingInstrumentSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:contentDescription="Seeking Instrument"
+                    android:entries="@array/instruments"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/SeekingSkillSpinnerHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seeking_skill_spinner"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/seekingSkillSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:contentDescription="Seeking Skill"
+                    android:entries="@array/skills"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2">
+
+                <TextView
+                    android:id="@+id/SeekingGenreSpinnerHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/seeking_genre_spinner"
+                    android:textSize="15sp"/>
+
+                <Spinner
+                    android:id="@+id/seekingGenreSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:contentDescription="Seeking Genre"
+                    android:entries="@array/genre"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="30sp"
+                android:layout_marginRight="75dp"
+                android:layout_marginBottom="30sp"
+                android:backgroundTint="@color/graphite"
+                android:text="@string/savebtn"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

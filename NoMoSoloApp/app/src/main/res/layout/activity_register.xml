@@ -235,7 +235,8 @@
                 android:layout_marginRight="75dp"
                 android:layout_marginBottom="30sp"
                 android:backgroundTint="@color/graphite"
-                android:text="@string/savebtn"
+                android:onClick="SetUpProfile"
+                android:text="@string/registerBtn"
                 android:textSize="15sp" />
 
         </LinearLayout>
