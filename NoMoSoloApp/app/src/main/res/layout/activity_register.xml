@@ -42,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -65,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -88,6 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -111,6 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -133,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -155,6 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -177,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
@@ -200,6 +207,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="horizontal">
 
                 <EditText
