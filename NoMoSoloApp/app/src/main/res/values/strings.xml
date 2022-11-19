@@ -17,6 +17,7 @@
     <string name="regSecurityAnswer">Enter Answer</string>
     <string name="registerBtn">Register</string>
     <string name="savebtn">Save Profile</string>
+    <string name="set_avatar"><u>Set New Photo</u></string>
     <string name="bio_header">User Bio:</string>
     <string name="bio_hint">Tell other Solos about yourself!</string>
     <string name="instruments_spinner">Instruments</string>
