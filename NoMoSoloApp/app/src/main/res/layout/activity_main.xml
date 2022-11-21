@@ -4,83 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:layout_marginBottom="10sp"
     android:background="@color/beige_1"
     android:backgroundTint="#F3EDEB"
     android:backgroundTintMode="src_over"
     android:foregroundTint="#F3EDEB"
     android:foregroundTintMode="screen"
     android:orientation="vertical"
-    android:paddingLeft="45sp"
+    android:paddingLeft="40sp"
     android:paddingTop="30sp"
-    android:paddingRight="45sp"
+    android:paddingRight="40sp"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/logo"
+        android:id="@+id/avatar"
         android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:layout_marginBottom="45sp"
+        android:layout_height="180dp"
+        android:layout_marginBottom="20sp"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/customborder"
+        android:backgroundTint="@color/beige_2"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/emailTxt"
-            android:layout_width="93dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/email"
-            android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/emailImg"
+            android:layout_width="100px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/email_icon" />
 
         <EditText
-            android:id="@+id/userInput"
-            android:layout_width="wrap_content"
+            android:id="@+id/emailInput"
+            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:height="48dp"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:overScrollMode="always"
+            android:textSize="18sp"
+            android:visibility="visible"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/customborder"
+        android:backgroundTint="@color/beige_2"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/passTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="@string/password"
-            android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/lockImg"
+            android:layout_width="100px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/lock_icon" />
 
         <EditText
             android:id="@+id/passInput"
-            android:layout_width="wrap_content"
+            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:height="48dp"
-            android:ems="10"
+            android:layout_gravity="center_vertical"
+            android:hint="@string/password"
             android:inputType="textPersonName"
+            android:overScrollMode="always"
+            android:textSize="18sp"
+            android:visibility="visible"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/saveBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="40sp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="30sp"
+        android:layout_marginRight="75dp"
+        android:layout_marginBottom="30sp"
         android:backgroundTint="@color/graphite"
-        android:text="@string/loginbtn" />
+        android:text="@string/loginbtn"
+        android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -100,6 +113,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
+            android:gravity="right"
+            android:onClick="GoToRegister"
             android:text="@string/register"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -124,6 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:gravity="right"
             android:text="@string/resetpw"
             android:textSize="18sp"
             android:textStyle="bold" />

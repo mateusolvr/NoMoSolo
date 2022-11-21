@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10sp"
+    android:background="@color/beige_1"
+    android:backgroundTint="#F3EDEB"
+    android:backgroundTintMode="src_over"
+    android:foregroundTint="#F3EDEB"
+    android:foregroundTintMode="screen"
+    android:orientation="vertical"
+    android:overScrollMode="ifContentScrolls"
+    android:paddingLeft="30sp"
+    android:paddingTop="30sp"
+    android:paddingRight="30sp"
+    android:scrollbarSize="0dp"
+    android:scrollbarStyle="outsideOverlay"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:layout_marginBottom="20sp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/logo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regFName"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:hint="@string/regFName"
+                    android:inputType="textPersonName"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regLName"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:hint="@string/regLName"
+                    android:inputType="textPersonName"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regEmailInput"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:hint="@string/regEmail"
+                    android:inputType="textEmailAddress"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regPhone"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/regPhone"
+                    android:inputType="text|phone"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regPasswordInput"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regRepeatPassword"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:hint="@string/regRepeatPw"
+                    android:inputType="textPassword"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regSecurityQuestion"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:hint="@string/regSecurityQuestion"
+                    android:inputType="textLongMessage"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/regSecurityAnswer"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:hint="@string/regSecurityAnswer"
+                    android:inputType="textLongMessage"
+                    android:overScrollMode="always"
+                    android:textSize="18sp"
+                    android:visibility="visible"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="30sp"
+                android:layout_marginRight="75dp"
+                android:layout_marginBottom="30sp"
+                android:backgroundTint="@color/graphite"
+                android:onClick="SetUpProfile"
+                android:text="@string/registerBtn"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documents/NoMoSolo/NoMoSoloApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Bill/OneDrive/Documents/NoMoSolo/NoMoSoloApp/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/Bill/OneDrive/Documents/NoMoSolo/NoMoSoloApp/app/src/main/res/layout/activity_profile.xml" value="0.30776092774308655" />
+        <entry key="..\:/Users/Bill/OneDrive/Documents/NoMoSolo/NoMoSoloApp/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/Users/Bill/OneDrive/Documents/NoMoSolo/NoMoSoloApp/app/src/main/res/layout/activity_user.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>
@@ -12,5 +17,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
   </component>
 </project>
