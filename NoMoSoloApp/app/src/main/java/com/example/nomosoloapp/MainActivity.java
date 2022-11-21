@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     TextView resetPassword;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +37,21 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
+        resetPassword = findViewById(R.id.resetPwClickable);
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ResetPassword01.class));
+            }
+        });
+
         dbManager = new DBManager(this);
         dbManager.open();
 
 //        dbManager.deleteEverything();
         createMusician();
         Log.d("AUTHENTICATION ---->", String.valueOf(authenticateUser("mateus.olvr@gmail.com", "12345")));
+
 
     }
 
@@ -122,17 +132,6 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return Base64.getEncoder().encodeToString(encBytes);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-
-        resetPassword = findViewById(R.id.resetPwClickable);
-        resetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, ResetPassword01.class));
-            }
-        });
     }
 
     // Returns base64 encoded salt
