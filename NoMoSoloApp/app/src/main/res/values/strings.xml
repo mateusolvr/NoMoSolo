@@ -1,12 +1,71 @@
 <resources>
     <string name="app_name">NoMoSoloApp</string>
-    <string name="email">Email:</string>
-    <string name="password">Password:</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
     <string name="loginbtn">Log In</string>
     <string name="forgotpw">Forgot Your Password?</string>
     <string name="resetpw"><u>Reset</u></string>
     <string name="notuser">Not Yet an User?</string>
     <string name="register"><u>Register</u></string>
+    <string name="regFName">First Name</string>
+    <string name="regLName">Last Name</string>
+    <string name="regEmail">Email</string>
+    <string name="regPhone">Phone Number</string>
+    <string name="regPw">Password</string>
+    <string name="regRepeatPw">Repeat Password</string>
+    <string name="regSecurityQuestion">Enter Security Question</string>
+    <string name="regSecurityAnswer">Enter Answer</string>
+    <string name="registerBtn">Register</string>
+    <string name="savebtn">Save Profile</string>
+    <string name="set_avatar"><u>Set New Photo</u></string>
+    <string name="bio_header">User Bio:</string>
+    <string name="bio_hint">Tell other Solos about yourself!</string>
+    <string name="instruments_spinner">Instruments</string>
+    <string name="skills_spinner">Skill Level</string>
+    <string name="genre1_spinner">Genre 1</string>
+    <string name="genre2_spinner">Genre 2</string>
+    <string name="seeking_instrument_spinner">Seeking Instrument</string>
+    <string name="seeking_skill_spinner">Seeking Skill Level</string>
+    <string name="seeking_genre_spinner">Seeking Genre</string>
+
+
+    <string-array name="instruments">
+        <item>Guitar</item>
+        <item>Bass Guitar</item>
+        <item>Keyboard</item>
+        <item>Drums/Percussive</item>
+        <item>Vocal</item>
+        <item>Violin</item>
+        <item>Saxophone</item>
+    </string-array>
+
+    <string-array name="skills">
+        <item>Beginner Enthusiast</item>
+        <item>Intermediate Enthusiast</item>
+        <item>Advanced Enthusiast</item>
+        <item>Professional Musician</item>
+    </string-array>
+
+    <string-array name="genre">
+        <item>Pop</item>
+        <item>Blues</item>
+        <item>HipHop/Rap</item>
+        <item>RnB</item>
+        <item>Soul</item>
+        <item>Jazz</item>
+        <item>Rock</item>
+        <item>Metal</item>
+        <item>Funk</item>
+        <item>Classical</item>
+        <item>Country</item>
+        <item>Reggae</item>
+        <item>World</item>
+        <item>Others</item>
+    </string-array>
+    <string name="title_activity_user">User</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
     <string name="securityQuestion">What is your mom\'s name?</string>
     <string name="incorrectAnswer">Incorrect answer. Please try again.</string>
     <string name="enterNewPassword">Enter new password</string>

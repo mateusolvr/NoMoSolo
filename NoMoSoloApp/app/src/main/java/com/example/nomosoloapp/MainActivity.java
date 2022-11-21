@@ -151,4 +151,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void GoToRegister(View v)
+    {
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
+    }
 }

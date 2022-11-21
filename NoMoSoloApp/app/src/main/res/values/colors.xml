@@ -8,5 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="beige_1">#F3EDEB</color>
+    <color name="beige_2">#FFF9EA</color>
     <color name="graphite">#363D46</color>
 </resources>
