@@ -7,4 +7,10 @@
     <string name="resetpw"><u>Reset</u></string>
     <string name="notuser">Not Yet an User?</string>
     <string name="register"><u>Register</u></string>
+    <string name="securityQuestion">What is your mom\'s name?</string>
+    <string name="incorrectAnswer">Incorrect answer. Please try again.</string>
+    <string name="enterNewPassword">Enter new password</string>
+    <string name="confirmPassword">Confirm password</string>
+
+
 </resources>

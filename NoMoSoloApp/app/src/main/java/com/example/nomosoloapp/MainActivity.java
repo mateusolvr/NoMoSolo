@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -17,12 +18,16 @@ import java.util.Base64;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private DBManager dbManager;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
+    TextView resetPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,6 +122,17 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return Base64.getEncoder().encodeToString(encBytes);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        resetPassword = findViewById(R.id.resetPwClickable);
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ResetPassword01.class));
+            }
+        });
     }
 
     // Returns base64 encoded salt
@@ -134,5 +150,6 @@ public class MainActivity extends AppCompatActivity {
         random.nextBytes(salt);
         return Base64.getEncoder().encodeToString(salt);
     }
+
 
 }
