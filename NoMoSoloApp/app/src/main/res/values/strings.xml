@@ -62,4 +62,8 @@
         <item>World</item>
         <item>Others</item>
     </string-array>
+    <string name="title_activity_user">User</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
