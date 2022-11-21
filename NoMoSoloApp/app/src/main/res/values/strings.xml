@@ -66,4 +66,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="securityQuestion">What is your mom\'s name?</string>
+    <string name="incorrectAnswer">Incorrect answer. Please try again.</string>
+    <string name="enterNewPassword">Enter new password</string>
+    <string name="confirmPassword">Confirm password</string>
+
+
 </resources>
