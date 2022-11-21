@@ -2,9 +2,14 @@ package com.example.nomosoloapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView resetPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +19,13 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
+        resetPassword = findViewById(R.id.resetPwClickable);
+        resetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ResetPassword01.class));
+            }
+        });
     }
 
 }
