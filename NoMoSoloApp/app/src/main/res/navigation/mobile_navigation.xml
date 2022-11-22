@@ -2,26 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation">
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_profile">
 
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/navigation_profile"
         android:name="com.example.nomosoloapp.ui.profile.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="@string/navprofile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/matchFragment"
+        android:id="@+id/navigation_match"
         android:name="com.example.nomosoloapp.ui.match.MatchFragment"
-        android:label="fragment_match"
+        android:label="@string/navmatch"
         tools:layout="@layout/fragment_match" />
     <fragment
-        android:id="@+id/chatFragment"
+        android:id="@+id/navigation_chat"
         android:name="com.example.nomosoloapp.ui.chat.ChatFragment"
-        android:label="fragment_chat"
+        android:label="@string/navchat"
         tools:layout="@layout/fragment_chat" />
     <fragment
-        android:id="@+id/calendarFragment"
+        android:id="@+id/navigation_calendar"
         android:name="com.example.nomosoloapp.ui.calendar.CalendarFragment"
-        android:label="fragment_calendar"
+        android:label="@string/navcalendar"
         tools:layout="@layout/fragment_calendar" />
 </navigation>

@@ -10,7 +10,7 @@ public class MatchViewModel extends ViewModel {
 
     public MatchViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is notifications fragment");
+        mText.setValue("This is match fragment");
     }
 
     public LiveData<String> getText() {

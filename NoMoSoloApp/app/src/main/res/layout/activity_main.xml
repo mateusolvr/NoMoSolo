@@ -84,7 +84,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/saveBtn"
+        android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="75dp"
@@ -92,6 +92,7 @@
         android:layout_marginRight="75dp"
         android:layout_marginBottom="30sp"
         android:backgroundTint="@color/graphite"
+        android:onClick="Login"
         android:text="@string/loginbtn"
         android:textSize="15sp" />
 
@@ -117,7 +118,8 @@
             android:onClick="GoToRegister"
             android:text="@string/register"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 
