@@ -27,6 +27,10 @@
     <string name="seeking_instrument_spinner">Seeking Instrument</string>
     <string name="seeking_skill_spinner">Seeking Skill Level</string>
     <string name="seeking_genre_spinner">Seeking Genre</string>
+    <string name="navprofile">Profile</string>
+    <string name="navmatch">Match</string>
+    <string name="navchat">Chat</string>
+    <string name="navcalendar">Calendar</string>
 
 
     <string-array name="instruments">
