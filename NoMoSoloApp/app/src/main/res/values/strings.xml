@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NoMoSoloApp</string>
+    <string name="app_name">NoMoSolo</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="loginbtn">Log In</string>

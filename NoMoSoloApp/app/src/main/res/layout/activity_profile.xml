@@ -245,6 +245,7 @@
                 android:layout_marginBottom="30sp"
                 android:backgroundTint="@color/graphite"
                 android:text="@string/savebtn"
+                android:textColor="@color/beige_2"
                 android:textSize="15sp" />
 
         </LinearLayout>

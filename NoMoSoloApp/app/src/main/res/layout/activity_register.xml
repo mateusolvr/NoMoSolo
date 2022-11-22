@@ -237,6 +237,7 @@
                 android:backgroundTint="@color/graphite"
                 android:onClick="SetUpProfile"
                 android:text="@string/registerBtn"
+                android:textColor="@color/beige_2"
                 android:textSize="15sp" />
 
         </LinearLayout>
