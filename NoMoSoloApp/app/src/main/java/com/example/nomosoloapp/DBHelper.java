@@ -31,6 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String GENRE1 = "genre1";
     public static final String GENRE2 = "genre2";
     public static final String INSTRUMENT_DESIRED = "instrument_desired";
+    public static final String SKILL_DESIRED = "skill_desired";
     public static final String GENRE_DESIRED = "genre_desired";
 
     private static final String CREATE_MUSICIAN_REG_TABLE = "create table " + MUSICIAN_REG_TABLE + "(" + ID
@@ -42,13 +43,13 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CREATE_MUSICIAN_INFO_TABLE = "create table " + MUSICIAN_INFO_TABLE + "(" + ID
             + " INTEGER PRIMARY KEY, " + BIO + " TEXT NOT NULL, " + INSTRUMENT + " TEXT NOT NULL, " + PHOTO + " BLOB, "
             + SKILL_LEVEL + " INTEGER NOT NULL, " + GENRE1 + " TEXT NOT NULL, " + GENRE2 + " TEXT NOT NULL, "
-            + INSTRUMENT_DESIRED + " TEXT NOT NULL, " + GENRE_DESIRED + " TEXT NOT NULL);";
+            + INSTRUMENT_DESIRED + " TEXT NOT NULL, " + SKILL_DESIRED + " TEXT NOT NULL, " + GENRE_DESIRED + " TEXT NOT NULL);";
 
     // Database Information
     static final String DB_NAME = "NoMoSolo.DB";
 
     // database version
-    static final int DB_VERSION = 1;
+    static final int DB_VERSION = 2;
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);

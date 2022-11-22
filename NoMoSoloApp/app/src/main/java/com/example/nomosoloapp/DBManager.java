@@ -46,6 +46,22 @@ public class DBManager {
         database.insert(DBHelper.MUSICIAN_REG_TABLE, null, contentValue);
     }
 
+    public void setNewProfile(int id, String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre){
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DBHelper.ID, id);
+        contentValue.put(DBHelper.BIO, bio);
+        contentValue.put(DBHelper.INSTRUMENT, instrument);
+        contentValue.put(DBHelper.PHOTO, "");
+        contentValue.put(DBHelper.SKILL_LEVEL, skillLevel);
+        contentValue.put(DBHelper.GENRE1, genre1);
+        contentValue.put(DBHelper.GENRE2, genre2);
+        contentValue.put(DBHelper.INSTRUMENT_DESIRED, seekingInstrument);
+        contentValue.put(DBHelper.SKILL_DESIRED, seekingSkill);
+        contentValue.put(DBHelper.GENRE_DESIRED, seekingGenre);
+
+        database.insert(DBHelper.MUSICIAN_INFO_TABLE, null, contentValue);
+    }
+
     public String checkEmail(String email) {
         String[] columns = new String[]{DBHelper.EMAIL};
         Cursor cursor = database.query(DBHelper.MUSICIAN_REG_TABLE, columns, DBHelper.EMAIL+" = ?", new String[]{email}, null, null, null);
@@ -62,6 +78,17 @@ public class DBManager {
         Cursor cursor = database.query(DBHelper.MUSICIAN_REG_TABLE, columns, DBHelper.EMAIL+" = ?", new String[]{email}, null, null, null);
 
         return cursor;
+    }
+
+    public String getUserId(String email){
+        String[] columns = new String[]{DBHelper.ID};
+        Cursor cursor = database.query(DBHelper.MUSICIAN_REG_TABLE, columns, DBHelper.EMAIL+" = ?", new String[]{email}, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }
+        return null;
     }
 
     // TEMPORARY, DELETE LATER

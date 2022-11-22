@@ -20,9 +20,14 @@ public class ResetPassword01 extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent;
                 startActivity(new Intent(ResetPassword01.this, ResetPassword02.class));
             }
         });
+    }
+
+    public void getQuestions(){
+
     }
 }
