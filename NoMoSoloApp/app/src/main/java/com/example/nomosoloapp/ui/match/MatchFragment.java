@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,8 +25,10 @@ public class MatchFragment extends Fragment {
         binding = FragmentMatchBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textMatch;
-        matchViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        final ScrollView scrollView = binding.scrollMatch;
+
+        //Implement ViewModel here for backend data transferring
+        //matchViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
