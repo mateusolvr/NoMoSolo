@@ -98,6 +98,12 @@ public class DBManager {
         return null;
     }
 
+    public void updatePassword(String email, String newPassword){
+        ContentValues cv = new ContentValues();
+        cv.put(DBHelper.PASSWORD,newPassword);
+        database.update(DBHelper.MUSICIAN_REG_TABLE, cv, DBHelper.EMAIL+" = ?", new String[]{email});
+    }
+
     // TEMPORARY, DELETE LATER
     public void deleteEverything() {
         dbHelper.onUpgrade(database, 1, 1);
