@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NoMoSolo</string>
+    <string name="app_name">NoMoSoloApp</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="loginbtn">Log In</string>
@@ -75,6 +75,7 @@
     <string name="incorrectAnswer">Incorrect answer. Please try again.</string>
     <string name="enterNewPassword">Enter new password</string>
     <string name="confirmPassword">Confirm password</string>
+    <string name="answerHinter">Please enter your answer</string>
 
 
 </resources>
