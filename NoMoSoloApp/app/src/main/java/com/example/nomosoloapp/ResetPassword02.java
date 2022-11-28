@@ -1,12 +1,14 @@
 package com.example.nomosoloapp;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +32,9 @@ public class ResetPassword02 extends AppCompatActivity {
 
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
 
         button2 = findViewById(R.id.rp2Btn);
         button2.setOnClickListener(new View.OnClickListener() {

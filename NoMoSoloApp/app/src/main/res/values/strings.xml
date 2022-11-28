@@ -4,10 +4,9 @@
     <string name="password">Password</string>
     <string name="loginbtn">Log In</string>
     <string name="forgotpw">Forgot Your Password?</string>
-    <string name="resetpwGetQuestion"><u>Get Question</u></string>
-    <string name="resetpw"><u>Reset</u></string>
+    <string name="resetpw">Reset</string>
     <string name="notuser">Not Yet an User?</string>
-    <string name="register"><u>Register</u></string>
+    <string name="register">Register</string>
     <string name="regFName">First Name</string>
     <string name="regLName">Last Name</string>
     <string name="regEmail">Email</string>
@@ -18,6 +17,7 @@
     <string name="regSecurityAnswer">Enter Answer</string>
     <string name="registerBtn">Register</string>
     <string name="savebtn">Save Profile</string>
+    <string name="editprofilebtn">Edit Profile</string>
     <string name="set_avatar"><u>Set New Photo</u></string>
     <string name="bio_header">User Bio:</string>
     <string name="bio_hint">Tell other Solos about yourself!</string>
@@ -28,6 +28,10 @@
     <string name="seeking_instrument_spinner">Seeking Instrument</string>
     <string name="seeking_skill_spinner">Seeking Skill Level</string>
     <string name="seeking_genre_spinner">Seeking Genre</string>
+    <string name="navprofile">Profile</string>
+    <string name="navmatch">Match</string>
+    <string name="navchat">Chat</string>
+    <string name="navcalendar">Calendar</string>
 
 
     <string-array name="instruments">

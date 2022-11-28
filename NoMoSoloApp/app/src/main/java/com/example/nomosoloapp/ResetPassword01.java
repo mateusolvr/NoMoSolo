@@ -1,10 +1,12 @@
 package com.example.nomosoloapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -23,6 +25,9 @@ public class ResetPassword01 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password01);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
 
         dbManager = new DBManager(this);
         dbManager.open();
@@ -45,7 +50,7 @@ public class ResetPassword01 extends AppCompatActivity {
     }
 
     private void getQuestion(){
-        TextView emailTV = findViewById(R.id.rp1InputEmail);
+        TextView emailTV = findViewById(R.id.rp1EmailText);
         email = emailTV.getText().toString();
         Cursor cursor = dbManager.getQuestionAndAnswer(email);
 
