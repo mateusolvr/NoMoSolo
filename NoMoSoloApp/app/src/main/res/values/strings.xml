@@ -71,6 +71,7 @@
     <string name="incorrectAnswer">Incorrect answer. Please try again.</string>
     <string name="enterNewPassword">Enter new password</string>
     <string name="confirmPassword">Confirm password</string>
+    <string name="answerHinter">Please enter your answer</string>
 
 
 </resources>

@@ -73,6 +73,13 @@ public class DBManager {
         return null;
     }
 
+    public Cursor getQuestionAndAnswer(String email) {
+        String[] columns = new String[]{DBHelper.SECURITY_QUESTION, DBHelper.SECURITY_ANSWER};
+        Cursor cursor = database.query(DBHelper.MUSICIAN_REG_TABLE, columns, DBHelper.EMAIL+" = ?", new String[]{email}, null, null, null);
+
+        return cursor;
+    }
+
     public Cursor getSalt(String email) {
         String[] columns = new String[]{DBHelper.SALT, DBHelper.PASSWORD};
         Cursor cursor = database.query(DBHelper.MUSICIAN_REG_TABLE, columns, DBHelper.EMAIL+" = ?", new String[]{email}, null, null, null);
