@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <ScrollView
+        android:id="@+id/scrollProfile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:scrollbarSize="0dp"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/matchProfileAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/avatar" />
+
+
+            <TextView
+                android:id="@+id/matchProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="40dp"
+                android:text="John Doe"
+                android:textColor="@color/graphite"
+                android:textSize="25dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/matchProfileBioHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bio_header"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/matchProfileUserBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:paddingTop="5dp"
+                    android:text="Sample Bio"
+                    android:textColor="@color/graphite"
+                    android:inputType="textMultiLine"
+                    android:minHeight="30dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/matchProfileInstrumentHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/instruments_spinner"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/matchProfileInstrument"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/graphite"
+                    android:text="Sample Instrument" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/matchProfileSkillHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/skills_spinner"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/matchProfileUserSkill"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/graphite"
+                    android:text="Sample Skill Level" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/matchProfileGenre1Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genre1_spinner"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/matchProfileGenre1"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/graphite"
+                    android:text="Sample Genre 1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/customborder"
+                android:backgroundTint="@color/beige_1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/matchProfileGenre2Header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/genre2_spinner"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/matchProfileGenre2"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/graphite"
+                    android:text="Sample Genre 2" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/sendMessageBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="75dp"
+                android:layout_marginTop="30sp"
+                android:layout_marginRight="75dp"
+                android:layout_marginBottom="30sp"
+                android:backgroundTint="@color/graphite"
+                android:text="@string/sendmessagebtn"
+                android:textColor="@color/beige_2"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

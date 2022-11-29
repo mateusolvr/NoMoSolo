@@ -5,7 +5,6 @@
     android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="10sp"
     android:background="@color/beige_1"
     android:backgroundTint="#F3EDEB"
     android:backgroundTintMode="src_over"
@@ -21,7 +20,7 @@
         android:id="@+id/idTVSelectedDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/idBtnPickDate"
+        android:layout_above="@id/btnPickDate"
         android:layout_centerInParent="true"
         android:layout_margin="20dp"
         android:gravity="center"
@@ -43,6 +42,7 @@
         android:inputType="text"
         android:overScrollMode="always"
         android:textSize="18sp"
+        android:textAppearance="@style/TextStyle"
         android:visibility="visible"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -52,7 +52,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/idBtnPickDate"
+            android:id="@+id/btnPickDate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"

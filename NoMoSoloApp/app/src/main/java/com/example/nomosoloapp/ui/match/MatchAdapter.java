@@ -52,6 +52,13 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.getMatchName().setText(myMatch[0]);
         holder.getMatchInstrument().setText(myMatch[1]);
         holder.getMatchGenre().setText(myMatch[2]);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     @Override

@@ -25,4 +25,15 @@
         android:name="com.example.nomosoloapp.ui.calendar.CalendarFragment"
         android:label="@string/navcalendar"
         tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/navigation_calendar02"
+        android:name="com.example.nomosoloapp.ui.calendar.CalendarFragment02"
+        android:label="@string/navcalendar"
+        tools:layout="@layout/fragment_calendar02" />
+    <fragment
+        android:id="@+id/matchProfile"
+        android:name="com.example.nomosoloapp.ui.match.MatchProfile"
+        android:label="@string/navmatch"
+        tools:layout="@layout/fragment_match_profile" />
 </navigation>

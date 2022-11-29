@@ -8,7 +8,6 @@ import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.example.nomosoloapp.databinding.FragmentProfileBinding;
 
@@ -19,16 +18,10 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
-        ProfileViewModel profileViewModel =
-                new ViewModelProvider(this).get(ProfileViewModel.class);
-
         binding = FragmentProfileBinding.inflate(inflater, container, false);
 
         final ScrollView scrollView = binding.scrollProfile;
 
-        //Implement ViewModel here for backend data transferring
-        //profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return binding.getRoot();
     }
 
