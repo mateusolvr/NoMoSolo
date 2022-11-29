@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/matchAvatar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="108dp"
+        android:layout_height="112dp"
         android:maxWidth="25dp"
         android:maxHeight="25dp"
         app:srcCompat="@drawable/avatar" />
@@ -15,14 +15,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="15dp">
 
         <TextView
             android:id="@+id/matchName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FName LName"
-            android:textSize="20dp"/>
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/graphite"
+            android:textSize="28dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,14 +38,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sample Instrument" />
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/matchGenre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sample Genre" />
+                android:textSize="15dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
