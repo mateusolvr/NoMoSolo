@@ -77,7 +77,7 @@ public class CalendarFragment extends Fragment {
             Fragment fragment = new CalendarFragment02();
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(android.R.id.content, fragment);
+            fragmentTransaction.replace(R.id.calendar_container, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
