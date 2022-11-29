@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nomosoloapp.R;
@@ -56,7 +57,9 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                MatchProfile matchProfile = new MatchProfile();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.match_constraint,matchProfile).addToBackStack(null).commit();
             }
         });
     }

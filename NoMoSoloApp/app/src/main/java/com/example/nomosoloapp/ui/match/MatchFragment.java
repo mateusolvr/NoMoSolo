@@ -26,7 +26,7 @@ public class MatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        matchesList.add(new String[]{"John Doe","Guitar","Blues"});
+        matchesList.add(new String[]{"Potential Match","Guitar","Blues"});
 
 
         View view = inflater.inflate(R.layout.fragment_match, container, false);
