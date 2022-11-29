@@ -40,7 +40,7 @@
             app:srcCompat="@drawable/email_icon" />
 
         <EditText
-            android:id="@+id/emailInput"
+            android:id="@+id/noteInput"
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
