@@ -33,8 +33,11 @@ public class ResetPassword02 extends AppCompatActivity {
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
+
 
         button2 = findViewById(R.id.rp2Btn);
         button2.setOnClickListener(new View.OnClickListener() {

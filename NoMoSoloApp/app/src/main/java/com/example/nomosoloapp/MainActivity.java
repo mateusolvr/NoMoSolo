@@ -40,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
 
         resetPassword = findViewById(R.id.resetPwClickable);
         resetPassword.setOnClickListener(new View.OnClickListener() {

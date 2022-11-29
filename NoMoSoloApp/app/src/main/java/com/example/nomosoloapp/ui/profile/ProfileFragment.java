@@ -18,12 +18,14 @@ public class ProfileFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
         ProfileViewModel profileViewModel =
                 new ViewModelProvider(this).get(ProfileViewModel.class);
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
 
-        //final ScrollView scrollView = binding.scrollProfile;
+        final ScrollView scrollView = binding.scrollProfile;
 
         //Implement ViewModel here for backend data transferring
         //profileViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);

@@ -30,6 +30,7 @@
                 android:id="@+id/profileAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:scaleType="centerInside"
                 app:srcCompat="@drawable/avatar" />
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="40dp"
-                android:text="FNAME LNAME"
+                android:text="John Doe"
                 android:textColor="@color/graphite"
                 android:textSize="25dp" />
 

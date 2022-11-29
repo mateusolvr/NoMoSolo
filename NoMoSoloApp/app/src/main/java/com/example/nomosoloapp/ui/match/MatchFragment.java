@@ -31,7 +31,7 @@ public class MatchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        matchesList.add(new String[]{"FNAME LNAME","Guitar","Blues"});
+        matchesList.add(new String[]{"John Doe","Guitar","Blues"});
 
         MatchViewModel matchViewModel =
                 new ViewModelProvider(this).get(MatchViewModel.class);
