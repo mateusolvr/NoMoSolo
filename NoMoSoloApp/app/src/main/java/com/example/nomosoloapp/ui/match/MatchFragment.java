@@ -32,7 +32,7 @@ public class MatchFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         matchesList.add(new String[]{"FNAME LNAME","Guitar","Blues"});
-        
+
         MatchViewModel matchViewModel =
                 new ViewModelProvider(this).get(MatchViewModel.class);
 
