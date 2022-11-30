@@ -32,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
 
+        dbManager = new DBManager(this);
+        dbManager.open();
+
+        dbManager.populateEmptyDB();
+
         resetPassword = findViewById(R.id.resetPwClickable);
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dbManager = new DBManager(this);
-        dbManager.open();
 
 //        //        dbManager.deleteEverything();
 //        Log.d("AUTHENTICATION ---->", String.valueOf(authenticateUser("mateus.olvr@gmail.com", "12345")));

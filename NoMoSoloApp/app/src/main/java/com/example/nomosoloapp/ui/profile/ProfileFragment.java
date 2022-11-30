@@ -40,7 +40,6 @@ public class ProfileFragment extends Fragment {
 
         Intent intent = requireActivity().getIntent();
         Bundle bundle = intent.getExtras();
-
         if (bundle != null) {
             userID = bundle.getString("userID");
         }
