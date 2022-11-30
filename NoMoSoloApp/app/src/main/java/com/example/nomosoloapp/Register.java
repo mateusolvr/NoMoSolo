@@ -5,7 +5,6 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -13,16 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
-import java.util.ArrayList;
-import java.util.Base64;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 
 public class Register extends AppCompatActivity {
 
@@ -71,7 +60,7 @@ public class Register extends AppCompatActivity {
         } else if (!isEmailAvailable(email)){
             Toast.makeText(getApplicationContext(),"Email already taken. Use another one.",Toast.LENGTH_SHORT).show();
         } else {
-            passwordHelper myPasswordHelper = new passwordHelper(dbManager);
+            PasswordHelper myPasswordHelper = new PasswordHelper(dbManager);
             String salt = myPasswordHelper.getNewSalt();
             String encryptedPassword = myPasswordHelper.getEncryptedPassword(password, salt);
 

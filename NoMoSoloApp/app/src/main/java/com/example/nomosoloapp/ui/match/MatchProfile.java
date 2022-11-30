@@ -7,60 +7,48 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.example.nomosoloapp.R;
+import com.example.nomosoloapp.User;
+import com.example.nomosoloapp.databinding.FragmentMatchProfileBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MatchProfile#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MatchProfile extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentMatchProfileBinding binding;
+    private User user;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public MatchProfile() {
+    public MatchProfile(User user) {
         // Required empty public constructor
+        this.user = user;
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MatchProfile.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MatchProfile newInstance(String param1, String param2) {
-        MatchProfile fragment = new MatchProfile();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_match_profile, container, false);
+        binding = FragmentMatchProfileBinding.inflate(inflater, container, false);
+        loadProfile();
+        return binding.getRoot();
+    }
+
+    public void loadProfile() {
+        TextView profileNameTV = binding.matchProfileName;
+        TextView profileUserBioTV = binding.matchProfileUserBio;
+        TextView profileUserInstrumentTV = binding.matchProfileInstrument;
+        TextView profileUserSkillTV = binding.matchProfileUserSkill;
+        TextView profileUserGenre1TV = binding.matchProfileGenre1;
+        TextView profileUserGenre2TV = binding.matchProfileGenre2;
+
+        profileNameTV.setText(user.getFn() + " " + user.getLn());
+        profileUserBioTV.setText(user.getBio());
+        profileUserInstrumentTV.setText(user.getInstrument());
+        profileUserSkillTV.setText(user.getSkillLevel());
+        profileUserGenre1TV.setText(user.getGenre1());
+        profileUserGenre2TV.setText(user.getGenre2());
     }
 }

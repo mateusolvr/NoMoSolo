@@ -1,45 +1,97 @@
 package com.example.nomosoloapp;
 
-import android.os.Bundle;
-import android.text.Html;
+public class User {
+    private String fn, ln, bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingSkill, seekingGenre;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.nomosoloapp.databinding.ActivityUserBinding;
-
-public class User extends AppCompatActivity {
-
-    private ActivityUserBinding binding;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.navprofile) + "</font>"));
-
-
-        binding = ActivityUserBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_profile, R.id.navigation_match, R.id.navigation_chat, R.id.navigation_calendar)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_user);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+    public User(String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
+        this.bio = bio;
+        this.instrument = instrument;
+        this.skillLevel = skillLevel;
+        this.genre1 = genre1;
+        this.genre2 = genre2;
+        this.seekingInstrument = seekingInstrument;
+        this.seekingSkill = seekingSkill;
+        this.seekingGenre = seekingGenre;
     }
 
+    public String getFn() {
+        return fn;
+    }
+
+    public void setFn(String fn) {
+        this.fn = fn;
+    }
+
+    public String getLn() {
+        return ln;
+    }
+
+    public void setLn(String ln) {
+        this.ln = ln;
+    }
+
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getInstrument() {
+        return instrument;
+    }
+
+    public void setInstrument(String instrument) {
+        this.instrument = instrument;
+    }
+
+    public String getSkillLevel() {
+        return skillLevel;
+    }
+
+    public void setSkillLevel(String skillLevel) {
+        this.skillLevel = skillLevel;
+    }
+
+    public String getGenre1() {
+        return genre1;
+    }
+
+    public void setGenre1(String genre1) {
+        this.genre1 = genre1;
+    }
+
+    public String getGenre2() {
+        return genre2;
+    }
+
+    public void setGenre2(String genre2) {
+        this.genre2 = genre2;
+    }
+
+    public String getSeekingInstrument() {
+        return seekingInstrument;
+    }
+
+    public void setSeekingInstrument(String seekingInstrument) {
+        this.seekingInstrument = seekingInstrument;
+    }
+
+    public String getSeekingSkill() {
+        return seekingSkill;
+    }
+
+    public void setSeekingSkill(String seekingSkill) {
+        this.seekingSkill = seekingSkill;
+    }
+
+    public String getSeekingGenre() {
+        return seekingGenre;
+    }
+
+    public void setSeekingGenre(String seekingGenre) {
+        this.seekingGenre = seekingGenre;
+    }
 }

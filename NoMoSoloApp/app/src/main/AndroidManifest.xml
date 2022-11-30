@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".Calendar01" />
         <activity
-            android:name=".User"
+            android:name=".Fragments"
             android:exported="false"
             android:label="@string/title_activity_user" />
         <activity

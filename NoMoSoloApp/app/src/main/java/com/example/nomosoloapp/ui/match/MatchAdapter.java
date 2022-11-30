@@ -1,5 +1,6 @@
 package com.example.nomosoloapp.ui.match;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nomosoloapp.R;
+import com.example.nomosoloapp.User;
 
 import java.util.ArrayList;
 
 public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> {
-    private ArrayList<String[]> allMatches;
-    public MatchAdapter(ArrayList<String[]> data)
+    private ArrayList<User> allMatches;
+    public MatchAdapter(ArrayList<User> data)
     {
         this.allMatches = data;
     }
@@ -49,16 +51,16 @@ public class MatchAdapter extends RecyclerView.Adapter<MatchAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final String myMatch[] = allMatches.get(position);
-        holder.getMatchName().setText(myMatch[0]);
-        holder.getMatchInstrument().setText(myMatch[1]);
-        holder.getMatchGenre().setText(myMatch[2]);
+        User myUser = allMatches.get(position);
+        holder.getMatchName().setText(myUser.getFn() + " " + myUser.getLn());
+        holder.getMatchInstrument().setText(myUser.getInstrument());
+        holder.getMatchGenre().setText(myUser.getGenre1());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                MatchProfile matchProfile = new MatchProfile();
+                MatchProfile matchProfile = new MatchProfile(myUser);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.match_constraint,matchProfile).addToBackStack(null).commit();
             }
         });

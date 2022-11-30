@@ -69,7 +69,7 @@ public class ResetPassword02 extends AppCompatActivity {
         cursor.moveToFirst();
         String salt = cursor.getString(0);
 
-        passwordHelper myPasswordHelper = new passwordHelper(dbManager);
+        PasswordHelper myPasswordHelper = new PasswordHelper(dbManager);
         String encryptedPassword = myPasswordHelper.getEncryptedPassword(password, salt);
         dbManager.updatePassword(email, encryptedPassword);
         passwordUpdatedFlag = true;
