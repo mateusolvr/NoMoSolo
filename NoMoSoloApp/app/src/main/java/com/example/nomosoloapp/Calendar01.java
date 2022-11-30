@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,13 +47,13 @@ public class Calendar01 extends AppCompatActivity {
         postNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText note = (EditText) findViewById(R.id.noteInput);
+                EditText note = (EditText) findViewById(R.id.emailInput);
 
                 String strNote, strDate;
                 strNote = note.getText().toString();
                 strDate = selectedDateTV.getText().toString();
 
-                ((EditText) findViewById(R.id.noteInput)).getText().clear();
+                ((EditText) findViewById(R.id.emailInput)).getText().clear();
 
                 String toastMessage = strNote + " on " + strDate;
                 Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_LONG).show();

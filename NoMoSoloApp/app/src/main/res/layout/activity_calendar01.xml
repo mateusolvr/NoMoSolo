@@ -32,7 +32,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/noteInput"
+        android:id="@+id/emailInput"
         style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

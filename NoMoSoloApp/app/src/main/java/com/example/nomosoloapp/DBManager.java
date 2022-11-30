@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -102,6 +101,39 @@ public class DBManager {
         ContentValues cv = new ContentValues();
         cv.put(DBHelper.PASSWORD,newPassword);
         database.update(DBHelper.MUSICIAN_REG_TABLE, cv, DBHelper.EMAIL+" = ?", new String[]{email});
+    }
+
+    public User getUserProfile(String userID){
+        String[] columns = new String[]{DBHelper.BIO, DBHelper.INSTRUMENT, DBHelper.SKILL_LEVEL, DBHelper.GENRE1, DBHelper.GENRE2, DBHelper.INSTRUMENT_DESIRED, DBHelper.SKILL_DESIRED, DBHelper.GENRE_DESIRED};
+        Cursor cursor = database.query(DBHelper.MUSICIAN_INFO_TABLE, columns, DBHelper.ID+" = ?", new String[]{userID}, null, null, null);
+
+        columns = new String[]{DBHelper.FIRSTNAME, DBHelper.LASTNAME};
+        Cursor cursor2 = database.query(DBHelper.MUSICIAN_REG_TABLE, columns, DBHelper.ID+" = ?", new String[]{userID}, null, null, null);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String bio = cursor.getString(0);
+            String instrument = cursor.getString(1);
+            String skillLevel = cursor.getString(2);
+            String genre1 = cursor.getString(3);
+            String genre2 = cursor.getString(4);
+            String seekingInstrument = cursor.getString(5);
+            String seekingLevel = cursor.getString(6);
+            String seekingGenre = cursor.getString(7);
+
+            User user = new User(bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingLevel, seekingGenre);
+            if (cursor2 != null && cursor.getCount() > 0) {
+                cursor2.moveToFirst();
+                String fn = cursor2.getString(0);
+                String ln = cursor2.getString(1);
+
+                user.setFn(fn.trim().toUpperCase());
+                user.setLn(ln.trim().toUpperCase());
+            }
+            return user;
+        }
+
+        return null;
     }
 
     // TEMPORARY, DELETE LATER

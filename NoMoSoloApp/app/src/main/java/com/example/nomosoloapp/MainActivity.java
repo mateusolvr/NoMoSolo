@@ -4,25 +4,15 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.Cursor;
 import android.os.Build;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.util.Log;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
-import java.util.ArrayList;
-import java.util.Base64;
-
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
 import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,17 +52,31 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void GoToRegister(View v)
-    {
+    public void GoToRegister(View v) {
 //        dbManager.close();
         Intent intent = new Intent(this, Register.class);
         startActivity(intent);
 
     }
 
-    public void Login(View v)
-    {
-        Intent intent = new Intent(this, User.class);
-        startActivity(intent);
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void Login(View v) {
+        TextView emailTV = findViewById(R.id.emailInput);
+        TextView passwordTV = findViewById(R.id.passInput);
+        String email = emailTV.getText().toString();
+        String password = passwordTV.getText().toString();
+
+        PasswordHelper myPasswordHelper = new PasswordHelper(dbManager);
+
+        if (email.equals("") || password.equals("")) {
+            Toast.makeText(getApplicationContext(), "Please inform both email and password.", Toast.LENGTH_SHORT).show();
+        } else if (myPasswordHelper.authenticateUser(email, password)) {
+            String userID = dbManager.getUserId(email);
+            Intent intent = new Intent(this, Fragments.class);
+            intent.putExtra("userID", userID);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getApplicationContext(), "Wrong password. Try again or click Reset password.", Toast.LENGTH_SHORT).show();
+        }
     }
 }
