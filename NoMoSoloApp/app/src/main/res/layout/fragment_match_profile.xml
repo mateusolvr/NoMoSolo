@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.profile.ProfileFragment">
 
     <ScrollView
@@ -27,7 +28,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/profileAvatar"
+                android:id="@+id/matchProfileAvatar"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="30dp"
@@ -37,12 +38,12 @@
 
 
             <TextView
-                android:id="@+id/profileName"
+                android:id="@+id/matchProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="40dp"
-                android:text="John Doe"
+                android:text="Potential Match"
                 android:textColor="@color/graphite"
                 android:textSize="25dp" />
 
@@ -55,14 +56,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileBioHeader"
+                    android:id="@+id/matchProfileBioHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bio_header"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/profileUserBio"
+                    android:id="@+id/matchProfileUserBio"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:ems="10"
@@ -83,14 +84,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileInstrumentHeader"
+                    android:id="@+id/matchProfileInstrumentHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/instruments_spinner"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/profileUserInstrument"
+                    android:id="@+id/matchProfileInstrument"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
@@ -107,14 +108,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileSkillHeader"
+                    android:id="@+id/matchProfileSkillHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/skills_spinner"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/profileUserSkill"
+                    android:id="@+id/matchProfileUserSkill"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
@@ -131,14 +132,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileGenre1Header"
+                    android:id="@+id/matchProfileGenre1Header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/genre1_spinner"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/profileUserGenre1"
+                    android:id="@+id/matchProfileGenre1"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
@@ -155,14 +156,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileGenre2Header"
+                    android:id="@+id/matchProfileGenre2Header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/genre2_spinner"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/profileUserGenre2"
+                    android:id="@+id/matchProfileGenre2"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
@@ -170,80 +171,8 @@
                     android:text="Sample Genre 2" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/profileSeekingInstrumentHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seeking_instrument_spinner"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/profileSeekingInstrument"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Seeking Instrument" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/profileSeekingSkillHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seeking_skill_spinner"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/profileSeekingSkill"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Seeking Skill" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/profileSeekingGenreHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/seeking_genre_spinner"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/profileSeekingGenre"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Seeking Genre" />
-            </LinearLayout>
-
             <Button
-                android:id="@+id/editProfileBtn"
+                android:id="@+id/sendMessageBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="75dp"
@@ -251,7 +180,7 @@
                 android:layout_marginRight="75dp"
                 android:layout_marginBottom="30sp"
                 android:backgroundTint="@color/graphite"
-                android:text="@string/editprofilebtn"
+                android:text="@string/sendmessagebtn"
                 android:textColor="@color/beige_2"
                 android:textSize="15sp" />
 

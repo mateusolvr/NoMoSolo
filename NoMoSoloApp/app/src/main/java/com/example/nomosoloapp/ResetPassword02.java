@@ -33,8 +33,11 @@ public class ResetPassword02 extends AppCompatActivity {
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
+
 
         button2 = findViewById(R.id.rp2Btn);
         button2.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +69,7 @@ public class ResetPassword02 extends AppCompatActivity {
         cursor.moveToFirst();
         String salt = cursor.getString(0);
 
-        passwordHelper myPasswordHelper = new passwordHelper(dbManager);
+        PasswordHelper myPasswordHelper = new PasswordHelper(dbManager);
         String encryptedPassword = myPasswordHelper.getEncryptedPassword(password, salt);
         dbManager.updatePassword(email, encryptedPassword);
         passwordUpdatedFlag = true;

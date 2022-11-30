@@ -14,11 +14,11 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
-public class passwordHelper {
+public class PasswordHelper {
 
     private DBManager dbManager;
 
-    public passwordHelper(DBManager dbManager){
+    public PasswordHelper(DBManager dbManager){
         this.dbManager = dbManager;
     }
 
@@ -42,7 +42,7 @@ public class passwordHelper {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private boolean authenticateUser(String email, String inputPass) {
+    public boolean authenticateUser(String email, String inputPass) {
         Cursor c = dbManager.getSalt(email);
         String salt = null;
         String userEncryptedPassword = null;
@@ -50,6 +50,8 @@ public class passwordHelper {
             c.moveToFirst();
             salt = c.getString(0);
             userEncryptedPassword = c.getString(1);
+        } else{
+            return false;
         }
         String calculatedHash = getEncryptedPassword(inputPass, salt);
         if (calculatedHash.equals(userEncryptedPassword)) {

@@ -37,7 +37,7 @@ public class CalendarFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView selectedDateTV = binding.idTVSelectedDate;
-        final Button pickDateBtn = binding.idBtnPickDate;
+        final Button pickDateBtn = binding.btnPickDate;
         final Button postNoteBtn = binding.btnAddNote;
         final Button transitionBtn = binding.btnTransition;
 
@@ -60,27 +60,24 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-        postNoteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText note = (EditText) binding.noteInput;
+        postNoteBtn.setOnClickListener(view -> {
+            EditText note = (EditText) binding.noteInput;
 
-                String strNote, strDate;
-                strNote = note.getText().toString();
-                strDate = selectedDateTV.getText().toString();
+            String strNote, strDate;
+            strNote = note.getText().toString();
+            strDate = selectedDateTV.getText().toString();
 
-                binding.noteInput.getText().clear();
+            binding.noteInput.getText().clear();
 
-                String toastMessage = strNote + " on " + strDate;
-                Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_LONG).show();
-            }
+            String toastMessage = strNote + " on " + strDate;
+            Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_LONG).show();
         });
 
         transitionBtn.setOnClickListener(view -> {
             Fragment fragment = new CalendarFragment02();
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(android.R.id.content, fragment);
+            fragmentTransaction.replace(R.id.calendar_container, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
