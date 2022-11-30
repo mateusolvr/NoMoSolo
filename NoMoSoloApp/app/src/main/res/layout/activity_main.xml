@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:hint="@string/password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:overScrollMode="always"
             android:textSize="18sp"
             android:textAppearance="@style/TextStyle"
