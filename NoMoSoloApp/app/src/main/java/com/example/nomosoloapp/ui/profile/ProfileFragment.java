@@ -34,7 +34,6 @@ public class ProfileFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
 
         dbManager = new DBManager(getContext());
         dbManager.open();
@@ -48,7 +47,7 @@ public class ProfileFragment extends Fragment {
 
         loadPersonalProfile();
 
-        return root;
+        return binding.getRoot();
     }
 
     @Override

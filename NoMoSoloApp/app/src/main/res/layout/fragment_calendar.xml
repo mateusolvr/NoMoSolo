@@ -1,23 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="10sp"
+    android:background="@color/beige_1"
+    android:backgroundTint="#F3EDEB"
+    android:backgroundTintMode="src_over"
+    android:foregroundTint="#F3EDEB"
+    android:foregroundTintMode="screen"
+    android:orientation="vertical"
+    android:paddingLeft="40sp"
+    android:paddingTop="30sp"
+    android:paddingRight="40sp"
     tools:context=".ui.calendar.CalendarFragment">
 
     <TextView
-        android:id="@+id/text_calendar"
+        android:id="@+id/idTVSelectedDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_above="@id/idBtnPickDate"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Choose a date"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/noteInput"
+        style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:hint="Type note..."
+        android:inputType="text"
+        android:overScrollMode="always"
+        android:textSize="18sp"
+        android:visibility="visible"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/idBtnPickDate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/graphite"
+            android:text="Pick Date"
+            android:textAllCaps="false"
+            android:textColor="@color/beige_1"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnAddNote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/graphite"
+            android:text="Post note"
+            android:textAllCaps="false"
+            android:textColor="@color/beige_1"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="bottom|center"
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
+
+        <Button
+            android:id="@+id/btnTransition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/graphite"
+            android:text="View Notes"
+            android:textAllCaps="false"
+            android:textColor="@color/beige_1"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</LinearLayout>

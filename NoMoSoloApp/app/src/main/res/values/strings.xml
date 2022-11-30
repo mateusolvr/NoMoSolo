@@ -76,6 +76,8 @@
     <string name="enterNewPassword">Enter new password</string>
     <string name="confirmPassword">Confirm password</string>
     <string name="answerHinter">Please enter your answer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
