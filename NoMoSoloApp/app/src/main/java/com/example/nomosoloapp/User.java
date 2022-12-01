@@ -1,9 +1,10 @@
 package com.example.nomosoloapp;
 
 public class User {
-    private String fn, ln, bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingSkill, seekingGenre;
+    private String id, fn, ln, bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingSkill, seekingGenre;
 
-    public User(String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
+    public User(String id, String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
+        this.id = id;
         this.bio = bio;
         this.instrument = instrument;
         this.skillLevel = skillLevel;
@@ -12,6 +13,14 @@ public class User {
         this.seekingInstrument = seekingInstrument;
         this.seekingSkill = seekingSkill;
         this.seekingGenre = seekingGenre;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFn() {

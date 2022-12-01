@@ -125,7 +125,7 @@ public class DBManager {
             String seekingLevel = cursor.getString(6);
             String seekingGenre = cursor.getString(7);
 
-            User user = new User(bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingLevel, seekingGenre);
+            User user = new User(userID, bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingLevel, seekingGenre);
             if (cursor2 != null && cursor.getCount() > 0) {
                 cursor2.moveToFirst();
                 String fn = cursor2.getString(0);
@@ -160,6 +160,21 @@ public class DBManager {
             }
         }
         return usersMatched;
+    }
+
+    public void updateProfile(String id, String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DBHelper.BIO, bio);
+        contentValue.put(DBHelper.INSTRUMENT, instrument);
+        contentValue.put(DBHelper.PHOTO, "");
+        contentValue.put(DBHelper.SKILL_LEVEL, skillLevel);
+        contentValue.put(DBHelper.GENRE1, genre1);
+        contentValue.put(DBHelper.GENRE2, genre2);
+        contentValue.put(DBHelper.INSTRUMENT_DESIRED, seekingInstrument);
+        contentValue.put(DBHelper.SKILL_DESIRED, seekingSkill);
+        contentValue.put(DBHelper.GENRE_DESIRED, seekingGenre);
+
+        database.update(DBHelper.MUSICIAN_INFO_TABLE, contentValue, DBHelper.ID + " = ?", new String[]{id});
     }
 
     // TEMPORARY, DELETE LATER

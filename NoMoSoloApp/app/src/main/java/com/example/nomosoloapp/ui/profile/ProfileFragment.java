@@ -21,7 +21,7 @@ import com.example.nomosoloapp.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
 
-    private FragmentProfileBinding binding;
+    private static FragmentProfileBinding binding;
     private String userID;
     private DBManager dbManager;
 
@@ -48,18 +48,18 @@ public class ProfileFragment extends Fragment {
             userID = bundle.getString("userID");
         }
 
-        final Button editProfileBtn = binding.editProfileBtn;
+        User user = getUser();
+        loadPersonalProfile(user);
 
+        final Button editProfileBtn = binding.editProfileBtn;
         editProfileBtn.setOnClickListener(view -> {
-            Fragment fragment = new EditProfileFragment();
+            Fragment fragment = new EditProfileFragment(user);
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.profile_constraint, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
-
-        loadPersonalProfile();
 
         return binding.getRoot();
     }
@@ -70,11 +70,15 @@ public class ProfileFragment extends Fragment {
         binding = null;
     }
 
-    public void loadPersonalProfile() {
+    private User getUser(){
         User user = dbManager.getUserProfile(userID);
         if (user == null){
             Toast.makeText(getActivity(), "Error loading user profile.", Toast.LENGTH_SHORT).show();
         }
+        return user;
+    }
+
+    public static void loadPersonalProfile(User user) {
 
         TextView profileNameTV = binding.profileName;
         TextView profileUserBioTV = binding.profileUserBio;
