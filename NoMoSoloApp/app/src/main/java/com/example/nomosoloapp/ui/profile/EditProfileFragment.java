@@ -1,11 +1,18 @@
 package com.example.nomosoloapp.ui.profile;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +21,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.example.nomosoloapp.DBManager;
 import com.example.nomosoloapp.R;
@@ -21,6 +29,7 @@ import com.example.nomosoloapp.User;
 import com.example.nomosoloapp.databinding.FragmentEditProfileBinding;
 import com.example.nomosoloapp.databinding.FragmentMatchProfileBinding;
 
+import java.io.IOException;
 public class EditProfileFragment extends Fragment {
 
     private DBManager dbManager;
@@ -32,10 +41,42 @@ public class EditProfileFragment extends Fragment {
         this.user = user;
     }
 
+    private TextView setAvatar;
+    private ImageView avatar;
+    private Uri imagePath;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent photoIntent = new Intent(Intent.ACTION_PICK);
+                photoIntent.setType("image/*");
+                startActivityForResult(photoIntent,1);
+            }
+        });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK && data!=null)
+        {
+            imagePath = data.getData();
+            getImageInImageView();
+        }
+    }
+
+    private void getImageInImageView() {
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),imagePath);
+            avatar.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
