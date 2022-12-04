@@ -20,6 +20,28 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#aacbb4</item>
     </style>
+    
+    <style name="DatePickerStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/graphite</item>
+        <!--selected Item color-->
+        <item name="colorControlActivated">#aacbb4</item>
+        <!-- arrow bordercolor(<>)-->
+        <item name="android:selectableItemBackgroundBorderless">@color/beige_1</item>
+        <!-- Highlight item color-->
+        <item name="colorControlHighlight">#aacbb4</item>
+        <!--Calender Background color -->
+        <item name="android:windowBackground">@color/beige_1</item>
+        <!-- Ok Cancel Color-->
+        <item name="android:textColor">@color/graphite</item>
+        <!-- Week TextColor-->
+        <item name="android:textColorSecondary">@color/graphite</item>
+        <!-- Calender Number color arrow color (< >) -->
+        <item name="android:textColorPrimary">@color/graphite</item>
+        <!--day , month-->
+        <item name="android:textColorPrimaryInverse">@color/beige_1</item>
+        <!-- year-->
+        <item name="android:textColorSecondaryInverse">@color/beige_1</item>
+    </style>
 
 
 </resources>
