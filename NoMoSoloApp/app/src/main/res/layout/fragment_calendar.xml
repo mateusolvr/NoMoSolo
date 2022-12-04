@@ -11,9 +11,9 @@
     android:foregroundTint="#F3EDEB"
     android:foregroundTintMode="screen"
     android:orientation="vertical"
-    android:paddingLeft="40sp"
+    android:paddingLeft="10sp"
     android:paddingTop="30sp"
-    android:paddingRight="40sp"
+    android:paddingRight="10sp"
     tools:context=".ui.calendar.CalendarFragment">
 
     <TextView
@@ -41,8 +41,8 @@
         android:hint="Type note..."
         android:inputType="text"
         android:overScrollMode="always"
-        android:textSize="18sp"
         android:textAppearance="@style/TextStyle"
+        android:textSize="18sp"
         android:visibility="visible"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 

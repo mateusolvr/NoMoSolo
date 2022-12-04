@@ -60,6 +60,8 @@ public class CalendarNotesAdapter extends RecyclerView.Adapter<CalendarNotesAdap
         date.setText(note.getDate());
 
         Button nextBtn = holder.btnNext;
+        Button deleteNoteBtn = holder.deleteBtn;
+
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,16 +76,24 @@ public class CalendarNotesAdapter extends RecyclerView.Adapter<CalendarNotesAdap
 //                        notesView).addToBackStack(null).commit();
             }
         });
+
+        deleteNoteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView date, noteText;
-        public Button btnNext;
+        public Button btnNext, deleteBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             date = (TextView) itemView.findViewById(R.id.noteDate);
             btnNext = (Button) itemView.findViewById(R.id.btnViewNote);
+            deleteBtn = (Button) itemView.findViewById(R.id.btnDeleteNote);
         }
 
         public TextView getNoteDate() {return date;}
