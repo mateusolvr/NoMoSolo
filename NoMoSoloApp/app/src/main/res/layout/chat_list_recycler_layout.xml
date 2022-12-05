@@ -43,14 +43,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/matchInstrument"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="15dp" />
-
-            <TextView
-                android:id="@+id/matchGenre"
+                android:id="@+id/topMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

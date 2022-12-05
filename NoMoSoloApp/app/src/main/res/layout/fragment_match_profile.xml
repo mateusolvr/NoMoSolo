@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/match_constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -11,12 +12,12 @@
         android:id="@+id/scrollProfile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
+        android:layout_marginBottom="50dp"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:layout_marginBottom="50dp"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,11 +31,11 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="80dp"
-                app:cardPreventCornerOverlap="false"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:layout_gravity="center_horizontal">
+                app:cardCornerRadius="80dp"
+                app:cardPreventCornerOverlap="false">
 
                 <ImageView
                     android:id="@+id/matchProfileAvatar"
@@ -79,11 +80,11 @@
                     android:layout_height="120dp"
                     android:ems="10"
                     android:gravity="start|top"
+                    android:inputType="textMultiLine"
+                    android:minHeight="30dp"
                     android:paddingTop="5dp"
                     android:text="Sample Bio"
-                    android:textColor="@color/graphite"
-                    android:inputType="textMultiLine"
-                    android:minHeight="30dp" />
+                    android:textColor="@color/graphite" />
             </LinearLayout>
 
             <LinearLayout
@@ -106,8 +107,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Instrument" />
+                    android:text="Sample Instrument"
+                    android:textColor="@color/graphite" />
             </LinearLayout>
 
             <LinearLayout
@@ -130,8 +131,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Skill Level" />
+                    android:text="Sample Skill Level"
+                    android:textColor="@color/graphite" />
             </LinearLayout>
 
             <LinearLayout
@@ -154,8 +155,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Genre 1" />
+                    android:text="Sample Genre 1"
+                    android:textColor="@color/graphite" />
             </LinearLayout>
 
             <LinearLayout
@@ -178,8 +179,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Genre 2" />
+                    android:text="Sample Genre 2"
+                    android:textColor="@color/graphite" />
             </LinearLayout>
 
             <Button

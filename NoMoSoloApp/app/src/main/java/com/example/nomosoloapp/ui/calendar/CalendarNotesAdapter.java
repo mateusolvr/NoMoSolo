@@ -1,29 +1,17 @@
 package com.example.nomosoloapp.ui.calendar;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.nomosoloapp.DBHelper;
 import com.example.nomosoloapp.DBManager;
 import com.example.nomosoloapp.Note;
 import com.example.nomosoloapp.R;
-import com.example.nomosoloapp.ui.chat.ChatFragment;
-import com.example.nomosoloapp.ui.match.MatchAdapter;
-import com.example.nomosoloapp.ui.match.MatchProfile;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -78,12 +66,6 @@ public class CalendarNotesAdapter extends RecyclerView.Adapter<CalendarNotesAdap
             }
         });
     }
-
-//    public void viewNote(View view){
-//        AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//        CalendarNotesView notesView = new CalendarNotesView(note);
-//        activity.getSupportFragmentManager().beginTransaction().replace(R.id.scrollNotes, notesView).addToBackStack(null).commit();
-//    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView date, noteText;
