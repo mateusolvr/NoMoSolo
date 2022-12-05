@@ -2,26 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp">
+    android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="55dp"
-        app:cardPreventCornerOverlap="false">
-
-        <ImageView
+    <ImageView
         android:id="@+id/matchAvatar"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="108dp"
+        android:layout_height="112dp"
         android:maxWidth="25dp"
         android:maxHeight="25dp"
         app:srcCompat="@drawable/avatar" />
-    </androidx.cardview.widget.CardView>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,14 +38,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/matchGenre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="18dp" />
+                android:textSize="15dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
