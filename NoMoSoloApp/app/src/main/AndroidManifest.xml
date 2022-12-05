@@ -13,22 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoMoSoloApp"
         tools:targetApi="31">
-        <activity
-            android:name=".ui.calendar.NoteDisplay"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
 
-        <activity
-            android:name=".Calendar02"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity android:name=".Calendar01" />
         <activity
             android:name=".Fragments"
             android:exported="false"

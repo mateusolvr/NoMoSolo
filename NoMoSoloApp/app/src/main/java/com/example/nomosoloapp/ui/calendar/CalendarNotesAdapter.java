@@ -66,12 +66,7 @@ public class CalendarNotesAdapter extends RecyclerView.Adapter<CalendarNotesAdap
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Please write something!", Toast.LENGTH_SHORT).show();
-
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                CalendarNotesView notesView = new CalendarNotesView(note);
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.calendar_container, notesView).addToBackStack(null).commit();
-
+                Toast.makeText(view.getContext(), note.getNote(), Toast.LENGTH_SHORT).show();
             }
         });
 
