@@ -1,34 +1,80 @@
 package com.example.nomosoloapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 public class Profile extends AppCompatActivity {
 
     private DBManager dbManager;
     private String userEmail;
+    private TextView setAvatar;
+    private ImageView avatar;
+    private Uri imagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher_foreground);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setTitle(Html.fromHtml("<font color=\"#363D46\">" + getString(R.string.app_name) + "</font>"));
 
         Intent intent = getIntent();
         userEmail = intent.getStringExtra("email");
 
         dbManager = new DBManager(this);
         dbManager.open();
+
+        setAvatar = findViewById(R.id.setAvatar);
+        avatar = findViewById(R.id.avatar);
+
+        //Prompting users to select photo in phone library
+        setAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent photoIntent = new Intent(Intent.ACTION_PICK);
+                photoIntent.setType("image/*");
+                startActivityForResult(photoIntent,1);
+            }
+        });
+    }
+
+    //Pulling img as Uri and converting Uri to Bitmap abd set image using bitmap
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == RESULT_OK && data!=null)
+        {
+            imagePath = data.getData();
+            getImageInImageView();
+        }
+    }
+
+    private void getImageInImageView() {
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),imagePath);
+            avatar.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void getElements(){

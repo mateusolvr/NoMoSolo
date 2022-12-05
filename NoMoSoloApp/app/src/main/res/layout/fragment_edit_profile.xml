@@ -4,75 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/profile_constraint"
+    android:overScrollMode="ifContentScrolls"
+    android:paddingLeft="30sp"
+    android:paddingRight="30sp"
+    android:scrollbarSize="0dp"
+    android:scrollbarStyle="outsideOverlay"
+    android:background="@color/white"
     tools:context=".ui.profile.ProfileFragment">
 
     <ScrollView
-        android:id="@+id/scrollProfile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:layout_marginBottom="50dp"
-        android:scrollbarSize="0dp"
-        android:scrollbarStyle="outsideOverlay"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/profileAvatar"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="80dp"
+                app:cardPreventCornerOverlap="false"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/avatar" />
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:maxWidth="150dp"
+                    android:maxHeight="150dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/avatar" />
+            </androidx.cardview.widget.CardView>
 
 
             <TextView
-                android:id="@+id/profileName"
+                android:id="@+id/setAvatar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="40dp"
-                android:text="John Doe"
+                android:text="@string/set_avatar"
                 android:textColor="@color/graphite"
-                android:textSize="25dp" />
+                android:textSize="18sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileBioHeader"
+                    android:id="@+id/bioHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bio_header"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileUserBio"
+                <EditText
+                    android:id="@+id/userBio"
                     android:layout_width="match_parent"
                     android:layout_height="120dp"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:paddingTop="5dp"
-                    android:text="Sample Bio"
-                    android:textColor="@color/graphite"
+                    android:hint="@string/bio_hint"
                     android:inputType="textMultiLine"
-                    android:minHeight="30dp" />
+                    android:minHeight="48dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -80,23 +84,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileInstrumentHeader"
+                    android:id="@+id/instrumentsSpinnerHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/instruments_spinner"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileUserInstrument"
+                <Spinner
+                    android:id="@+id/userInstrumentSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Instrument" />
+                    android:contentDescription="Instruments"
+                    android:entries="@array/instruments" />
             </LinearLayout>
 
             <LinearLayout
@@ -104,23 +107,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileSkillHeader"
+                    android:id="@+id/skillsSpinnerHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/skills_spinner"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileUserSkill"
+                <Spinner
+                    android:id="@+id/userSkillSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Skill Level" />
+                    android:contentDescription="User skill level"
+                    android:entries="@array/skills" />
             </LinearLayout>
 
             <LinearLayout
@@ -128,23 +130,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileGenre1Header"
+                    android:id="@+id/Genre1SpinnerHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/genre1_spinner"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileUserGenre1"
+                <Spinner
+                    android:id="@+id/userGenre1Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Genre 1" />
+                    android:contentDescription="User Genre 1"
+                    android:entries="@array/genre" />
             </LinearLayout>
 
             <LinearLayout
@@ -152,23 +153,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileGenre2Header"
+                    android:id="@+id/Genre2SpinnerHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/genre2_spinner"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileUserGenre2"
+                <Spinner
+                    android:id="@+id/userGenre2Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Genre 2" />
+                    android:contentDescription="User Genre 2"
+                    android:entries="@array/genre" />
             </LinearLayout>
 
             <LinearLayout
@@ -176,23 +176,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileSeekingInstrumentHeader"
+                    android:id="@+id/SeekingInstrumentSpinnerHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/seeking_instrument_spinner"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileSeekingInstrument"
+                <Spinner
+                    android:id="@+id/seekingInstrumentSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Seeking Instrument" />
+                    android:contentDescription="Seeking Instrument"
+                    android:entries="@array/instruments" />
             </LinearLayout>
 
             <LinearLayout
@@ -200,23 +199,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileSeekingSkillHeader"
+                    android:id="@+id/SeekingSkillSpinnerHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/seeking_skill_spinner"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileSeekingSkill"
+                <Spinner
+                    android:id="@+id/seekingSkillSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Seeking Skill" />
+                    android:contentDescription="Seeking Skill"
+                    android:entries="@array/skills" />
             </LinearLayout>
 
             <LinearLayout
@@ -224,27 +222,26 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/customborder"
-                android:backgroundTint="@color/beige_1"
+                android:backgroundTint="@color/beige_2"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profileSeekingGenreHeader"
+                    android:id="@+id/SeekingGenreSpinnerHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/seeking_genre_spinner"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/profileSeekingGenre"
+                <Spinner
+                    android:id="@+id/seekingGenreSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/graphite"
-                    android:text="Sample Seeking Genre" />
+                    android:contentDescription="Seeking Genre"
+                    android:entries="@array/genre" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/editProfileBtn"
+                android:id="@+id/saveBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="75dp"
@@ -252,7 +249,8 @@
                 android:layout_marginRight="75dp"
                 android:layout_marginBottom="30sp"
                 android:backgroundTint="@color/graphite"
-                android:text="@string/editprofilebtn"
+                android:onClick="saveProfile"
+                android:text="@string/savebtn"
                 android:textColor="@color/beige_2"
                 android:textSize="15sp" />
 

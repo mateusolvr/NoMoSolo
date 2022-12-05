@@ -1,5 +1,6 @@
 package com.example.nomosoloapp.ui.calendar;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,7 +38,7 @@ public class CalendarFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView selectedDateTV = binding.idTVSelectedDate;
-        final Button pickDateBtn = binding.idBtnPickDate;
+        final Button pickDateBtn = binding.btnPickDate;
         final Button postNoteBtn = binding.btnAddNote;
         final Button transitionBtn = binding.btnTransition;
 
@@ -52,7 +53,7 @@ public class CalendarFragment extends Fragment {
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getContext(), com.google.android.material.R.style.Theme_Material3_Light_Dialog ,
+                        getContext(), R.style.DatePickerStyle,
                         (view1, year1, month1, day1) -> selectedDateTV.setText(day1 + "-" + (month1 + 1) + "-" + year1),
                         year, month, day);
 
@@ -60,27 +61,24 @@ public class CalendarFragment extends Fragment {
             }
         });
 
-        postNoteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText note = (EditText) binding.noteInput;
+        postNoteBtn.setOnClickListener(view -> {
+            EditText note = (EditText) binding.noteInput;
 
-                String strNote, strDate;
-                strNote = note.getText().toString();
-                strDate = selectedDateTV.getText().toString();
+            String strNote, strDate;
+            strNote = note.getText().toString();
+            strDate = selectedDateTV.getText().toString();
 
-                binding.noteInput.getText().clear();
+            binding.noteInput.getText().clear();
 
-                String toastMessage = strNote + " on " + strDate;
-                Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_LONG).show();
-            }
+            String toastMessage = strNote + " on " + strDate;
+            Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_LONG).show();
         });
 
         transitionBtn.setOnClickListener(view -> {
             Fragment fragment = new CalendarFragment02();
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(android.R.id.content, fragment);
+            fragmentTransaction.replace(R.id.calendar_container, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
