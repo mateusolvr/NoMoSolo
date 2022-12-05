@@ -10,6 +10,7 @@ public class DBHelper extends SQLiteOpenHelper {
     // Tables Name
     public static final String MUSICIAN_REG_TABLE = "MUSICIAN_REG";
     public static final String MUSICIAN_INFO_TABLE = "MUSICIAN_INFO";
+    public static final String MUSICIAN_NOTES_TABLE = "MUSICIAN_NOTES";
 
     // Musician Registration Columns
     public static final String ID = "_id";
@@ -34,6 +35,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String SKILL_DESIRED = "skill_desired";
     public static final String GENRE_DESIRED = "genre_desired";
 
+    // Notes Columns
+    public static final String USER_ID = "user_id";
+    public static final String NOTE = "note";
+    public static final String NOTE_DATE = "date";
+    public static final String DELETED = "deleted";
+
+
     private static final String CREATE_MUSICIAN_REG_TABLE = "create table " + MUSICIAN_REG_TABLE + "(" + ID
             + " INTEGER PRIMARY KEY AUTOINCREMENT, " + FIRSTNAME + " TEXT NOT NULL, "
             + LASTNAME + " TEXT NOT NULL, " + EMAIL + " TEXT NOT NULL UNIQUE, " + PASSWORD + " TEXT NOT NULL, " + SALT + " TEXT NOT NULL, "
@@ -45,11 +53,15 @@ public class DBHelper extends SQLiteOpenHelper {
             + SKILL_LEVEL + " INTEGER NOT NULL, " + GENRE1 + " TEXT NOT NULL, " + GENRE2 + " TEXT NOT NULL, "
             + INSTRUMENT_DESIRED + " TEXT NOT NULL, " + SKILL_DESIRED + " TEXT NOT NULL, " + GENRE_DESIRED + " TEXT NOT NULL);";
 
+    private static final String CREATE_MUSICIAN_NOTES_TABLE = "create table " + MUSICIAN_NOTES_TABLE + "(" + ID
+            + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_ID + " INTEGER NOT NULL, "
+            + NOTE + " TEXT NOT NULL, " + NOTE_DATE + " TEXT NOT NULL, " + DELETED + " INTEGER NOT NULL);";
+
     // Database Information
     static final String DB_NAME = "NoMoSolo.DB";
 
     // database version
-    static final int DB_VERSION = 3;
+    static final int DB_VERSION = 4;
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -59,6 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDB) {
         sqLiteDB.execSQL(CREATE_MUSICIAN_REG_TABLE);
         sqLiteDB.execSQL(CREATE_MUSICIAN_INFO_TABLE);
+        sqLiteDB.execSQL(CREATE_MUSICIAN_NOTES_TABLE);
     }
 
     @Override
@@ -66,6 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("version change", "oldVersion: " + oldVersion + ", newVersion: " + newVerion);
         sqLiteDB.execSQL("DROP TABLE IF EXISTS " + MUSICIAN_REG_TABLE);
         sqLiteDB.execSQL("DROP TABLE IF EXISTS " + MUSICIAN_INFO_TABLE);
+        sqLiteDB.execSQL("DROP TABLE IF EXISTS " + MUSICIAN_NOTES_TABLE);
         onCreate(sqLiteDB);
     }
 }

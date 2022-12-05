@@ -1,18 +1,30 @@
 package com.example.nomosoloapp;
 
-public class Note {
-    private String date, note;
+import java.util.Date;
 
-    public Note(String date, String note) {
+public class Note {
+    private String id, note;
+    private Date date;
+
+    public Note(String id, Date date, String note) {
+        this.id = id;
         this.date = date;
         this.note = note;
     }
 
-    public String getDate() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

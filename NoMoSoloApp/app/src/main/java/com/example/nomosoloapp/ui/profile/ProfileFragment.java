@@ -1,11 +1,14 @@
 package com.example.nomosoloapp.ui.profile;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +24,7 @@ import com.example.nomosoloapp.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
 
-    private FragmentProfileBinding binding;
+    private static FragmentProfileBinding binding;
     private String userID;
     private DBManager dbManager;
 
@@ -48,18 +51,18 @@ public class ProfileFragment extends Fragment {
             userID = bundle.getString("userID");
         }
 
-        final Button editProfileBtn = binding.editProfileBtn;
+        User user = getUser();
+        loadPersonalProfile(user);
 
+        final Button editProfileBtn = binding.editProfileBtn;
         editProfileBtn.setOnClickListener(view -> {
-            Fragment fragment = new EditProfileFragment();
+            Fragment fragment = new EditProfileFragment(user);
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.profile_constraint, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
-
-        loadPersonalProfile();
 
         return binding.getRoot();
     }
@@ -70,13 +73,18 @@ public class ProfileFragment extends Fragment {
         binding = null;
     }
 
-    public void loadPersonalProfile() {
+    private User getUser() {
         User user = dbManager.getUserProfile(userID);
-        if (user == null){
+        if (user == null) {
             Toast.makeText(getActivity(), "Error loading user profile.", Toast.LENGTH_SHORT).show();
         }
+        return user;
+    }
+
+    public static void loadPersonalProfile(User user) {
 
         TextView profileNameTV = binding.profileName;
+        ImageView profileImageTV = binding.profileAvatar;
         TextView profileUserBioTV = binding.profileUserBio;
         TextView profileUserInstrumentTV = binding.profileUserInstrument;
         TextView profileUserSkillTV = binding.profileUserSkill;
@@ -87,6 +95,10 @@ public class ProfileFragment extends Fragment {
         TextView profileSeekingGenreTV = binding.profileSeekingGenre;
 
         profileNameTV.setText(user.getFn() + " " + user.getLn());
+        if (user.getPhoto()[0] != 0) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(user.getPhoto(), 0, user.getPhoto().length);
+            profileImageTV.setImageBitmap(bmp);
+        }
         profileUserBioTV.setText(user.getBio());
         profileUserInstrumentTV.setText(user.getInstrument());
         profileUserSkillTV.setText(user.getSkillLevel());
