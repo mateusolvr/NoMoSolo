@@ -4,6 +4,8 @@ import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -29,6 +31,7 @@ import com.example.nomosoloapp.User;
 import com.example.nomosoloapp.databinding.FragmentEditProfileBinding;
 import com.example.nomosoloapp.databinding.FragmentMatchProfileBinding;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 public class EditProfileFragment extends Fragment {
 
@@ -48,15 +51,6 @@ public class EditProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setAvatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent photoIntent = new Intent(Intent.ACTION_PICK);
-                photoIntent.setType("image/*");
-                startActivityForResult(photoIntent,1);
-            }
-        });
     }
 
     @Override
@@ -89,6 +83,19 @@ public class EditProfileFragment extends Fragment {
         dbManager = new DBManager(getContext());
         dbManager.open();
 
+
+        setAvatar = binding.setAvatar;
+        avatar = binding.avatar;
+
+        setAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent photoIntent = new Intent(Intent.ACTION_PICK);
+                photoIntent.setType("image/*");
+                startActivityForResult(photoIntent,1);
+            }
+        });
+
         final Button saveProfileBtn = binding.saveBtn;
         saveProfileBtn.setOnClickListener(view -> {
             updateProfile();
@@ -102,6 +109,7 @@ public class EditProfileFragment extends Fragment {
 
     private void loadCurrentValues(){
         TextView profileUserBioTV = binding.userBio;
+        ImageView profileImageTV = binding.avatar;
         Spinner profileUserInstrumentSpinner = binding.userInstrumentSpinner;
         Spinner profileUserSkillSpinner = binding.userSkillSpinner;
         Spinner profileUserGenre1Spinner = binding.userGenre1Spinner;
@@ -111,6 +119,10 @@ public class EditProfileFragment extends Fragment {
         Spinner profileSeekingGenreSpinner = binding.seekingGenreSpinner;
 
         profileUserBioTV.setText(user.getBio());
+        if (user.getPhoto()[0] != 0) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(user.getPhoto(), 0, user.getPhoto().length);
+            profileImageTV.setImageBitmap(bmp);
+        }
         profileUserInstrumentSpinner.setSelection(((ArrayAdapter)profileUserInstrumentSpinner.getAdapter()).getPosition(user.getInstrument()));
         profileUserSkillSpinner.setSelection(((ArrayAdapter)profileUserSkillSpinner.getAdapter()).getPosition(user.getSkillLevel()));
         profileUserGenre1Spinner.setSelection(((ArrayAdapter)profileUserGenre1Spinner.getAdapter()).getPosition(user.getGenre1()));
@@ -122,6 +134,7 @@ public class EditProfileFragment extends Fragment {
 
     private void updateProfile(){
 
+        ImageView imageIV = binding.avatar;
         TextView profileUserBioTV = binding.userBio;
         Spinner profileUserInstrumentSpinner = binding.userInstrumentSpinner;
         Spinner profileUserSkillSpinner = binding.userSkillSpinner;
@@ -130,6 +143,11 @@ public class EditProfileFragment extends Fragment {
         Spinner profileSeekingInstrumentSpinner = binding.seekingInstrumentSpinner;
         Spinner profileSeekingSkillSpinner = binding.seekingSkillSpinner;
         Spinner profileSeekingGenreSpinner = binding.seekingGenreSpinner;
+
+        Bitmap bitmap = ((BitmapDrawable)imageIV.getDrawable()).getBitmap();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap .compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] userImg = bos.toByteArray();
 
         String userBio = profileUserBioTV.getText().toString();
         String userInstrument = profileUserInstrumentSpinner.getSelectedItem().toString();
@@ -140,7 +158,7 @@ public class EditProfileFragment extends Fragment {
         String seekingSkill = profileSeekingSkillSpinner.getSelectedItem().toString();
         String seekingGenre = profileSeekingGenreSpinner.getSelectedItem().toString();
 
-        dbManager.updateProfile(user.getId(), userBio, userInstrument, userSkill, userGenre1, userGenre2, seekingInstrument, seekingSkill, seekingGenre);
+        dbManager.updateProfile(user.getId(),userImg, userBio, userInstrument, userSkill, userGenre1, userGenre2, seekingInstrument, seekingSkill, seekingGenre);
     }
 
     private User getUpdatedUser(User oldUser){

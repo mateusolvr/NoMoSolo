@@ -49,12 +49,12 @@ public class DBManager {
         database.insert(DBHelper.MUSICIAN_REG_TABLE, null, contentValue);
     }
 
-    public void setNewProfile(int id, String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
+    public void setNewProfile(int id, byte[] picture, String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.ID, id);
         contentValue.put(DBHelper.BIO, bio);
         contentValue.put(DBHelper.INSTRUMENT, instrument);
-        contentValue.put(DBHelper.PHOTO, "");
+        contentValue.put(DBHelper.PHOTO, picture);
         contentValue.put(DBHelper.SKILL_LEVEL, skillLevel);
         contentValue.put(DBHelper.GENRE1, genre1);
         contentValue.put(DBHelper.GENRE2, genre2);
@@ -108,7 +108,7 @@ public class DBManager {
     }
 
     public User getUserProfile(String userID) {
-        String[] columns = new String[]{DBHelper.BIO, DBHelper.INSTRUMENT, DBHelper.SKILL_LEVEL, DBHelper.GENRE1, DBHelper.GENRE2, DBHelper.INSTRUMENT_DESIRED, DBHelper.SKILL_DESIRED, DBHelper.GENRE_DESIRED};
+        String[] columns = new String[]{DBHelper.BIO, DBHelper.INSTRUMENT, DBHelper.SKILL_LEVEL, DBHelper.GENRE1, DBHelper.GENRE2, DBHelper.INSTRUMENT_DESIRED, DBHelper.SKILL_DESIRED, DBHelper.GENRE_DESIRED, DBHelper.PHOTO};
         Cursor cursor = database.query(DBHelper.MUSICIAN_INFO_TABLE, columns, DBHelper.ID + " = ?", new String[]{userID}, null, null, null);
 
         columns = new String[]{DBHelper.FIRSTNAME, DBHelper.LASTNAME};
@@ -124,8 +124,9 @@ public class DBManager {
             String seekingInstrument = cursor.getString(5);
             String seekingLevel = cursor.getString(6);
             String seekingGenre = cursor.getString(7);
+            byte[] userPhoto = cursor.getBlob(8);
 
-            User user = new User(userID, bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingLevel, seekingGenre);
+            User user = new User(userID, userPhoto, bio, instrument, skillLevel, genre1, genre2, seekingInstrument, seekingLevel, seekingGenre);
             if (cursor2 != null && cursor.getCount() > 0) {
                 cursor2.moveToFirst();
                 String fn = cursor2.getString(0);
@@ -162,11 +163,11 @@ public class DBManager {
         return usersMatched;
     }
 
-    public void updateProfile(String id, String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
+    public void updateProfile(String id, byte[] picture, String bio, String instrument, String skillLevel, String genre1, String genre2, String seekingInstrument, String seekingSkill, String seekingGenre) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DBHelper.BIO, bio);
         contentValue.put(DBHelper.INSTRUMENT, instrument);
-        contentValue.put(DBHelper.PHOTO, "");
+        contentValue.put(DBHelper.PHOTO, picture);
         contentValue.put(DBHelper.SKILL_LEVEL, skillLevel);
         contentValue.put(DBHelper.GENRE1, genre1);
         contentValue.put(DBHelper.GENRE2, genre2);

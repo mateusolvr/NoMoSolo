@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class Profile extends AppCompatActivity {
@@ -78,6 +80,7 @@ public class Profile extends AppCompatActivity {
     }
 
     private void getElements(){
+        ImageView imageIV = findViewById(R.id.avatar);
         TextView userBioTV = findViewById(R.id.userBio);
         Spinner userInstrumentSpinner = (Spinner) findViewById(R.id.userInstrumentSpinner);
         Spinner userSkillSpinner = (Spinner) findViewById(R.id.userSkillSpinner);
@@ -86,6 +89,14 @@ public class Profile extends AppCompatActivity {
         Spinner seekingInstrumentSpinner = (Spinner) findViewById(R.id.seekingInstrumentSpinner);
         Spinner seekingSkillSpinner = (Spinner) findViewById(R.id.seekingSkillSpinner);
         Spinner seekingGenreSpinner = (Spinner) findViewById(R.id.seekingGenreSpinner);
+
+
+
+
+        Bitmap bitmap = ((BitmapDrawable)imageIV.getDrawable()).getBitmap();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap .compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] userImg = bos.toByteArray();
 
         String userBio = userBioTV.getText().toString();
         String userInstrument = userInstrumentSpinner.getSelectedItem().toString();
@@ -97,7 +108,7 @@ public class Profile extends AppCompatActivity {
         String seekingGenre = seekingGenreSpinner.getSelectedItem().toString();
 
         String userId = dbManager.getUserId(userEmail);
-        dbManager.setNewProfile(Integer.parseInt(userId), userBio, userInstrument, userSkill, userGenre1, userGenre2, seekingInstrument, seekingSkill, seekingGenre);
+        dbManager.setNewProfile(Integer.parseInt(userId), userImg, userBio, userInstrument, userSkill, userGenre1, userGenre2, seekingInstrument, seekingSkill, seekingGenre);
     }
 
     public void saveProfile(View v){

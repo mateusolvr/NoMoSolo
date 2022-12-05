@@ -1,11 +1,14 @@
 package com.example.nomosoloapp.ui.profile;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,9 +73,9 @@ public class ProfileFragment extends Fragment {
         binding = null;
     }
 
-    private User getUser(){
+    private User getUser() {
         User user = dbManager.getUserProfile(userID);
-        if (user == null){
+        if (user == null) {
             Toast.makeText(getActivity(), "Error loading user profile.", Toast.LENGTH_SHORT).show();
         }
         return user;
@@ -81,6 +84,7 @@ public class ProfileFragment extends Fragment {
     public static void loadPersonalProfile(User user) {
 
         TextView profileNameTV = binding.profileName;
+        ImageView profileImageTV = binding.profileAvatar;
         TextView profileUserBioTV = binding.profileUserBio;
         TextView profileUserInstrumentTV = binding.profileUserInstrument;
         TextView profileUserSkillTV = binding.profileUserSkill;
@@ -91,6 +95,10 @@ public class ProfileFragment extends Fragment {
         TextView profileSeekingGenreTV = binding.profileSeekingGenre;
 
         profileNameTV.setText(user.getFn() + " " + user.getLn());
+        if (user.getPhoto()[0] != 0) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(user.getPhoto(), 0, user.getPhoto().length);
+            profileImageTV.setImageBitmap(bmp);
+        }
         profileUserBioTV.setText(user.getBio());
         profileUserInstrumentTV.setText(user.getInstrument());
         profileUserSkillTV.setText(user.getSkillLevel());

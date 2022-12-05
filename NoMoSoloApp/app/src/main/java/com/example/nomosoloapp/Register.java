@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 public class Register extends AppCompatActivity {
 
     private DBManager dbManager;
@@ -55,7 +57,11 @@ public class Register extends AppCompatActivity {
         String securityQuestion = securityQuestionTV.getText().toString();
         String securityAnswer = securityAnswerTV.getText().toString();
 
-        if (!password.equals(repeatPassword)){
+        if(!ValidateEmailRFC5322Regex(email)){
+            Toast.makeText(getApplicationContext(),"Email is not valid!",Toast.LENGTH_SHORT).show();
+        } else if (password.length() < 6){
+            Toast.makeText(getApplicationContext(),"Please user a password with at least 6 characters!",Toast.LENGTH_SHORT).show();
+        }  else if (!password.equals(repeatPassword)){
             Toast.makeText(getApplicationContext(),"Passwords don't match!",Toast.LENGTH_SHORT).show();
         } else if (!isEmailAvailable(email)){
             Toast.makeText(getApplicationContext(),"Email already taken. Use another one.",Toast.LENGTH_SHORT).show();
@@ -71,6 +77,13 @@ public class Register extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    public boolean ValidateEmailRFC5322Regex(String emailAddress) {
+        String regexPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+        return Pattern.compile(regexPattern)
+                .matcher(emailAddress)
+                .matches();
     }
 
     private boolean isEmailAvailable(String email) {
