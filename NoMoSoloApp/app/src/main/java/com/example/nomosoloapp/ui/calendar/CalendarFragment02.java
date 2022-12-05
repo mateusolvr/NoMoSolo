@@ -1,11 +1,9 @@
 package com.example.nomosoloapp.ui.calendar;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,14 +26,14 @@ public class CalendarFragment02 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        CalendarViewModel calendarViewModel = new ViewModelProvider(this).get(CalendarViewModel.class);
+//        CalendarViewModel calendarViewModel = new ViewModelProvider(this).get(CalendarViewModel.class);
 
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         View view = inflater.inflate(R.layout.fragment_calendar02, container, false);
 
-        recyclerView = view.findViewById(R.id.notes_rView);
+        recyclerView = view.findViewById(R.id.notes_rView_2);
         //recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));

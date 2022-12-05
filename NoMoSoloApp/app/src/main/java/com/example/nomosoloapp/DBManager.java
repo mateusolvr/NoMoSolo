@@ -9,6 +9,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -176,6 +177,41 @@ public class DBManager {
         contentValue.put(DBHelper.GENRE_DESIRED, seekingGenre);
 
         database.update(DBHelper.MUSICIAN_INFO_TABLE, contentValue, DBHelper.ID + " = ?", new String[]{id});
+    }
+
+    public void createNewNote(String userID, String note, Date date) {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DBHelper.USER_ID, userID);
+        contentValue.put(DBHelper.NOTE, note);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        contentValue.put(DBHelper.NOTE_DATE, dateFormat.format(date));
+        contentValue.put(DBHelper.DELETED, 0);
+
+        database.insert(DBHelper.MUSICIAN_NOTES_TABLE, null, contentValue);
+    }
+
+    public ArrayList<Note> getNotes(String userID) throws ParseException {
+
+        String[] columns = new String[]{DBHelper.ID, DBHelper.NOTE, DBHelper.NOTE_DATE};
+        Cursor cursor = database.query(DBHelper.MUSICIAN_NOTES_TABLE, columns, DBHelper.USER_ID + " = ? AND " + DBHelper.DELETED + " = 0 " , new String[]{userID}, null, null, DBHelper.NOTE_DATE);
+
+        ArrayList<Note> notes = new ArrayList<>();
+
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                Date noteDate = new SimpleDateFormat("yyyy-MM-dd").parse(cursor.getString(2));
+                Note newNote = new Note(cursor.getString(0), noteDate, cursor.getString(1));
+                notes.add(newNote);
+            }
+        }
+        return notes;
+    }
+
+    public void deleteNote(String noteId) {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DBHelper.DELETED, 1);
+
+        database.update(DBHelper.MUSICIAN_NOTES_TABLE, contentValue, DBHelper.ID + " = ?", new String[]{noteId});
     }
 
     // TEMPORARY, DELETE LATER

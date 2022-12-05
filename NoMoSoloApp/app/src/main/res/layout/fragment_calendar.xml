@@ -25,7 +25,7 @@
         android:layout_margin="20dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Choose a date"
+        android:text="@string/chooseDate"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:layout_margin="20dp"
+            android:layout_margin="2dp"
             android:backgroundTint="@color/graphite"
             android:text="Pick Date"
             android:textAllCaps="false"
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:layout_margin="20dp"
+            android:layout_margin="2dp"
             android:backgroundTint="@color/graphite"
             android:text="Post note"
             android:textAllCaps="false"
@@ -77,24 +77,46 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/myNotesTV"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="bottom|center"
-        android:orientation="vertical"
-        android:paddingBottom="50dp">
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnPickDate"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/myNotes"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnTransition"
+    <ScrollView
+        android:id="@+id/scrollNotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="10dp"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:backgroundTint="@color/graphite"
-            android:text="View Notes"
-            android:textAllCaps="false"
-            android:textColor="@color/beige_1"
-            android:textSize="18sp" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/notesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

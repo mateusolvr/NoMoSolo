@@ -2,6 +2,8 @@ package com.example.nomosoloapp.ui.calendar;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,29 +20,52 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nomosoloapp.Calendar01;
+import com.example.nomosoloapp.DBManager;
+import com.example.nomosoloapp.Note;
 import com.example.nomosoloapp.R;
 import com.example.nomosoloapp.databinding.FragmentCalendarBinding;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CalendarFragment extends Fragment {
 
-    private FragmentCalendarBinding binding;
+    private static FragmentCalendarBinding binding;
+    private static RecyclerView recyclerView;
+    private static DBManager dbManager;
+    private static String userID;
+
+    private TextView selectedDateTV;
+    private Button pickDateBtn;
+    private Button postNoteBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CalendarViewModel calendarViewModel =
-                new ViewModelProvider(this).get(CalendarViewModel.class);
 
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView selectedDateTV = binding.idTVSelectedDate;
-        final Button pickDateBtn = binding.btnPickDate;
-        final Button postNoteBtn = binding.btnAddNote;
-        final Button transitionBtn = binding.btnTransition;
+        selectedDateTV = binding.idTVSelectedDate;
+        pickDateBtn = binding.btnPickDate;
+        postNoteBtn = binding.btnAddNote;
+
+        dbManager = new DBManager(getContext());
+        dbManager.open();
+
+        Intent intent = requireActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            userID = bundle.getString("userID");
+        }
+
+        showNotes(getContext());
 
         pickDateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,26 +90,44 @@ public class CalendarFragment extends Fragment {
             EditText note = (EditText) binding.noteInput;
 
             String strNote, strDate;
+            Date noteDate = null;
             strNote = note.getText().toString();
             strDate = selectedDateTV.getText().toString();
-
-            binding.noteInput.getText().clear();
-
-            String toastMessage = strNote + " on " + strDate;
-            Toast.makeText(getActivity(), toastMessage, Toast.LENGTH_LONG).show();
+            if (strDate.equals(getString(R.string.chooseDate))) {
+                Toast.makeText(getActivity(), "Please select the date!", Toast.LENGTH_SHORT).show();
+            } else if (strNote.equals("")) {
+                Toast.makeText(getActivity(), "Please write something!", Toast.LENGTH_SHORT).show();
+            } else {
+                try {
+                    noteDate = new SimpleDateFormat("dd-MM-yyyy").parse(strDate);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                binding.noteInput.getText().clear();
+                selectedDateTV.setText(getString(R.string.chooseDate));
+                dbManager.createNewNote(userID, strNote, noteDate);
+                showNotes(getContext());
+            }
         });
 
-        transitionBtn.setOnClickListener(view -> {
-            Fragment fragment = new CalendarFragment02();
-            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.calendar_container, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-        });
-
-        calendarViewModel.getText().observe(getViewLifecycleOwner(), selectedDateTV::setText);
         return root;
+    }
+
+    public static void showNotes(Context c) {
+        recyclerView = binding.notesRecyclerView;
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(c));
+
+        ArrayList<Note> notes = new ArrayList<>();
+        try {
+            notes = dbManager.getNotes(userID);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        CalendarNotesAdapter adapter = new CalendarNotesAdapter(notes);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
     @Override
