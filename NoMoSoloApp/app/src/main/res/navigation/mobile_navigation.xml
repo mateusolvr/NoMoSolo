@@ -32,8 +32,13 @@
         android:label="@string/navcalendar"
         tools:layout="@layout/fragment_calendar02" />
     <fragment
-        android:id="@+id/matchProfile"
+        android:id="@+id/navigation_match_profile"
         android:name="com.example.nomosoloapp.ui.match.MatchProfile"
         android:label="@string/navmatch"
         tools:layout="@layout/fragment_match_profile" />
+    <fragment
+        android:id="@+id/navigation_edit_profile"
+        android:name="com.example.nomosoloapp.ui.profile.EditProfileFragment"
+        android:label="@string/navprofile"
+        tools:layout="@layout/fragment_edit_profile" />
 </navigation>
