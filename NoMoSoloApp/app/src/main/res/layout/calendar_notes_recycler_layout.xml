@@ -14,11 +14,20 @@
 
     <Button
         android:id="@+id/btnViewNote"
-        android:layout_width="2dp"
+        android:layout_width="1dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:backgroundTint="@color/graphite"
         android:text="View"
+        android:textColor="#DED8E6" />
+
+    <Button
+        android:id="@+id/btnDeleteNote"
+        android:layout_width="2dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:backgroundTint="@color/graphite"
+        android:text="Delete"
         android:textColor="#DED8E6" />
 
 </LinearLayout>
