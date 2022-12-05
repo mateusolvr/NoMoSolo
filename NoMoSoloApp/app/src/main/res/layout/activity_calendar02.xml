@@ -16,10 +16,8 @@
     android:paddingRight="40sp"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/textView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/calendarRView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Second calendar page" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

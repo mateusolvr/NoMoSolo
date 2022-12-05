@@ -1,5 +1,6 @@
 package com.example.nomosoloapp.ui.calendar;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -52,7 +53,7 @@ public class CalendarFragment extends Fragment {
                 int day = c.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        getContext(), com.google.android.material.R.style.Theme_Material3_Light_Dialog ,
+                        getContext(), R.style.DatePickerStyle,
                         (view1, year1, month1, day1) -> selectedDateTV.setText(day1 + "-" + (month1 + 1) + "-" + year1),
                         year, month, day);
 
