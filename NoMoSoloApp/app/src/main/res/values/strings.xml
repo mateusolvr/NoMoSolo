@@ -84,6 +84,7 @@
     <string name="myNotes">My Notes</string>
     <string name="myNote">My Note</string>
     <string name="send_button_vector">Send Button Vector</string>
+    <string name="sendarrowdescription">Send Arrow</string>
 
 
 </resources>

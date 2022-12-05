@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -52,27 +53,9 @@ public class MatchProfile extends Fragment {
 
         final Button sendMessageBtn = binding.sendMessageBtn;
         sendMessageBtn.setOnClickListener(view -> {
-
-//            ArrayList<Message> messages = new ArrayList<>();
-//            messages.add(new Message("From", "To", "Hello"));
-//
-//            View newView = inflater.inflate(R.layout.fragment_chat_messages, container, false);
-//            FragmentChatMessagesBinding newBiding = FragmentChatMessagesBinding.inflate(inflater, container, false);
-////            recyclerView = newView.findViewById(R.id.chatMessagesRecyclerView);
-//            recyclerView = newBiding.chatMessagesRecyclerView;
-//            recyclerView.setHasFixedSize(true);
-//            recyclerView.setLayoutManager(new LinearLayoutManager(newView.getContext()));
-//            ChatMessagesAdapter adapter = new ChatMessagesAdapter(messages);
-//            recyclerView.setAdapter(adapter);
-//
-//            Fragment fragment = new ChatMessages();
-//            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//            fragmentTransaction.replace(R.id.match_constraint, fragment);
-//            fragmentTransaction.addToBackStack(null);
-//            fragmentTransaction.commit();
-
-
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
+            ChatMessages chatMessages = new ChatMessages();
+            activity.getSupportFragmentManager().beginTransaction().replace(R.id.match_profile_constraint, chatMessages).addToBackStack(null).commit();
         });
 
 

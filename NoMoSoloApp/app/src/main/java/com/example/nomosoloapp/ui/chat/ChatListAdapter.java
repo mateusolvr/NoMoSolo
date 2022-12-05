@@ -67,16 +67,14 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
         //Backend change getInstrument to getTopMessage from convos
         holder.getTopMessage().setText("Testing top message");
 
-
-        //Change MatchProfile to ChatMessages here
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                MatchProfile matchProfile = new MatchProfile(myUser);
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.match_constraint, matchProfile).addToBackStack(null).commit();
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                ChatMessages chatMessages = new ChatMessages();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.chat_constraint, chatMessages).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override

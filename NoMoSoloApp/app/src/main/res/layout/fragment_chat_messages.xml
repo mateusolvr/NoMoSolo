@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.chat.ChatFragment"
-    android:background="@color/graphite">
+    android:background="@color/graphite"
+    android:layout_marginBottom="56dp">
 
     <ScrollView
         android:id="@+id/scrollChatMessages"
@@ -15,11 +16,12 @@
         android:scrollbars="none"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:layout_marginBottom="140dp"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:isScrollContainer="true"
+        app:layout_constraintBottom_toTopOf="@id/chatInputContainer"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -37,45 +39,62 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/chatInputContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/scrollChatMessages"
+        app:layout_constraintBottom_toBottomOf="@id/chat_constraint"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:baselineAligned="false">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="3"
             android:background="@drawable/customborder"
             android:backgroundTint="@color/beige_1"
-            android:layout_marginEnd="60dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="10dp">
 
             <EditText
                 android:id="@+id/sendMessageInput"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
                 android:ems="10"
                 android:hint="@string/chatmessagehint"
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine"
                 android:minHeight="48dp"
-                tools:ignore="MissingConstraints,TextContrastCheck"
                 android:textAppearance="@style/TextStyle"
-                android:layout_gravity="start"/>
+                tools:ignore="MissingConstraints,TextContrastCheck" />
+
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_baseline_send_24" />
+            android:layout_weight="0.5"
+            android:minWidth="40dp"
+            android:minHeight="40dp"
+            android:background="@drawable/customborder"
+            android:backgroundTint="@color/beige_1"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="5dp">
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minWidth="40dp"
+                android:minHeight="40dp"
+                android:src="@drawable/ic_baseline_send_24"
+                android:contentDescription="@string/sendarrowdescription" />
+        </LinearLayout>
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

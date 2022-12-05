@@ -1,0 +1,5 @@
+- Send message button onclick sends user to chatmessage fragment with the match user
+- Populate chatlist recyclerview with matches being chat with
+- Populate chatmessages recyclerview with messages -> Send arrow button onclick with sendmessageinput edittext
+- Change text box username to person sending messages (Optional)
+- Customize layout gravities and colors of chat messages bubbles to correspond with the sender (user end + beige 2, match start + grey).
