@@ -8,7 +8,7 @@
     tools:context=".ui.chat.ChatFragment">
 
     <ScrollView
-        android:id="@+id/scrollChatList"
+        android:id="@+id/scrollChatMessages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
@@ -28,7 +28,7 @@
             android:orientation="vertical" >
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/chatListRecyclerView"
+                android:id="@+id/chatMessagesRecyclerView"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
