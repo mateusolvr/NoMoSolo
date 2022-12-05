@@ -1,5 +1,7 @@
 package com.example.nomosoloapp.ui.match;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.nomosoloapp.User;
@@ -37,6 +40,7 @@ public class MatchProfile extends Fragment {
     }
 
     public void loadProfile() {
+        ImageView profileImageTV = binding.matchProfileAvatar;
         TextView profileNameTV = binding.matchProfileName;
         TextView profileUserBioTV = binding.matchProfileUserBio;
         TextView profileUserInstrumentTV = binding.matchProfileInstrument;
@@ -44,6 +48,11 @@ public class MatchProfile extends Fragment {
         TextView profileUserGenre1TV = binding.matchProfileGenre1;
         TextView profileUserGenre2TV = binding.matchProfileGenre2;
 
+        profileUserBioTV.setText(user.getBio());
+        if (user.getPhoto()[0] != 0) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(user.getPhoto(), 0, user.getPhoto().length);
+            profileImageTV.setImageBitmap(bmp);
+        }
         profileNameTV.setText(user.getFn() + " " + user.getLn());
         profileUserBioTV.setText(user.getBio());
         profileUserInstrumentTV.setText(user.getInstrument());

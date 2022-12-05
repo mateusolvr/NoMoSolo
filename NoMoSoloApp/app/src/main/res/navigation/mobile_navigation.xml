@@ -27,11 +27,6 @@
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
-        android:id="@+id/navigation_calendar02"
-        android:name="com.example.nomosoloapp.ui.calendar.CalendarFragment02"
-        android:label="@string/navcalendar"
-        tools:layout="@layout/fragment_calendar02" />
-    <fragment
         android:id="@+id/navigation_match_profile"
         android:name="com.example.nomosoloapp.ui.match.MatchProfile"
         android:label="@string/navmatch"
@@ -41,4 +36,9 @@
         android:name="com.example.nomosoloapp.ui.profile.EditProfileFragment"
         android:label="@string/navprofile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/navigation_calendar_notes_view"
+        android:name="com.example.nomosoloapp.ui.calendar.CalendarNotesView"
+        android:label="Notes"
+        tools:layout="@layout/fragment_calendar_notes_view" />
 </navigation>
