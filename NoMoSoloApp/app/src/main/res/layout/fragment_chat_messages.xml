@@ -5,7 +5,8 @@
     android:id="@+id/chat_constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.chat.ChatFragment">
+    tools:context=".ui.chat.ChatFragment"
+    android:background="@color/graphite">
 
     <ScrollView
         android:id="@+id/scrollChatMessages"
@@ -14,7 +15,7 @@
         android:scrollbars="none"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="140dp"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,18 +36,46 @@
         </LinearLayout>
     </ScrollView>
 
-    <EditText
-        android:id="@+id/sendMessageInput"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Write your message here"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/scrollChatMessages"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollChatMessages"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/customborder"
+            android:backgroundTint="@color/beige_1"
+            android:layout_marginEnd="60dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/sendMessageInput"
+                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/chatmessagehint"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:minHeight="48dp"
+                tools:ignore="MissingConstraints,TextContrastCheck"
+                android:textAppearance="@style/TextStyle"
+                android:layout_gravity="start"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_baseline_send_24" />
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

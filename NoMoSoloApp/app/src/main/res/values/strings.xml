@@ -33,6 +33,7 @@
     <string name="navmatch">Match</string>
     <string name="navchat">Chat</string>
     <string name="navcalendar">Calendar</string>
+    <string name="chatmessagehint">Write your message here</string>
 
 
     <string-array name="instruments">
@@ -82,6 +83,7 @@
     <string name="chooseDate">Choose a date</string>
     <string name="myNotes">My Notes</string>
     <string name="myNote">My Note</string>
+    <string name="send_button_vector">Send Button Vector</string>
 
 
 </resources>

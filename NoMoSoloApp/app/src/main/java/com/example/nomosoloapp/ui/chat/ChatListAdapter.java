@@ -65,7 +65,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
         holder.getMatchName().setText(myUser.getFn() + " " + myUser.getLn());
 
         //Backend change getInstrument to getTopMessage from convos
-        //holder.getTopMessage().setText(myUser.getInstrument());
+        holder.getTopMessage().setText("Testing top message");
 
 
         //Change MatchProfile to ChatMessages here

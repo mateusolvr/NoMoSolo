@@ -10,7 +10,7 @@
         android:layout_gravity="start"
         android:layout_marginBottom="15dp"
         android:background="@drawable/customborder"
-        android:backgroundTint="@color/beige_1"
+        android:backgroundTint="@color/beige_2"
         android:orientation="vertical">
 
         <TextView

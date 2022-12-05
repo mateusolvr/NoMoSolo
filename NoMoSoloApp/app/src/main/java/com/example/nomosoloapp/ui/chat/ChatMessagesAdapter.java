@@ -1,7 +1,5 @@
 package com.example.nomosoloapp.ui.chat;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nomosoloapp.Message;
 import com.example.nomosoloapp.R;
-import com.example.nomosoloapp.User;
-import com.example.nomosoloapp.ui.match.MatchAdapter;
 
 import java.util.ArrayList;
 
