@@ -1,0 +1,17 @@
+Presentation Steps
+
+Introduction: Team members introduce selves. Bill talks about the app and what it does.
+
+Demo:
+
+Mateus: Create new user, login, demo profile fragment, logout, reset password
+
+Bill: Login again, edit profile, choose another profile picture, save profile, go to matches and explain matches algorithm, send message
+
+Sal: start new messages, logout, login other user whom was sent chat, go to chat fragment, send new messages, logout, log back in the new user, show updated messages, demo calendar
+
+Coding:
+
+Sal: show case all front end xmls
+Bill: show case back end fragments and recycler views
+Mateus: show case activities and database
