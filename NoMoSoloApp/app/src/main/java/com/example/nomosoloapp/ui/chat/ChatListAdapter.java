@@ -12,16 +12,21 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nomosoloapp.Message;
 import com.example.nomosoloapp.R;
 import com.example.nomosoloapp.User;
 
 import java.util.ArrayList;
 
 public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHolder> {
-    private ArrayList<User> allChat;
+    private ArrayList<Message> messages;
+    private ArrayList<String> names;
+    private ArrayList<byte[]> myAvatars;
 
-    public ChatListAdapter(ArrayList<User> data) {
-        this.allChat = data;
+    public ChatListAdapter(ArrayList<Message> messages, ArrayList<String> names, ArrayList<byte[]> myAvatars) {
+        this.messages = messages;
+        this.names = names;
+        this.myAvatars = myAvatars;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -57,30 +62,29 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User myUser = allChat.get(position);
-        if (myUser.getPhoto()[0] != 0) {
-            Bitmap bmp = BitmapFactory.decodeByteArray(myUser.getPhoto(), 0, myUser.getPhoto().length);
+        String myMessage = messages.get(position).getMessage();
+        String userName = names.get(position);
+        String userToId = messages.get(position).getToUserId();
+        byte[] userPhoto = myAvatars.get(position);
+        if (userPhoto[0] != 0) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(userPhoto, 0, userPhoto.length);
             holder.getMatchAvatar().setImageBitmap(bmp);
         }
-        holder.getMatchName().setText(myUser.getFn() + " " + myUser.getLn());
+        holder.getMatchName().setText(userName);
+        holder.getTopMessage().setText(myMessage);
 
-        //Backend change getInstrument to getTopMessage from convos
-        holder.getTopMessage().setText("Testing top message");
-
-
-        //Change MatchProfile to ChatMessages here
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                MatchProfile matchProfile = new MatchProfile(myUser);
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.match_constraint, matchProfile).addToBackStack(null).commit();
-//            }
-//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                ChatMessages chatMessages = new ChatMessages(userToId, userName);
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.chat_constraint, chatMessages).addToBackStack(null).commit();
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return allChat.size();
+        return messages.size();
     }
 }

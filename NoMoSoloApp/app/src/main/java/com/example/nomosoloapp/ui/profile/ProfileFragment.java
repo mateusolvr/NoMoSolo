@@ -64,6 +64,14 @@ public class ProfileFragment extends Fragment {
             fragmentTransaction.commit();
         });
 
+        final Button logoutBtn = binding.logoutBtn;
+        logoutBtn.setOnClickListener(view -> {
+            if(getActivity() != null) {
+                getActivity().finish();
+            }
+            Toast.makeText(getActivity(), "User Logged Out", Toast.LENGTH_SHORT).show();
+        });
+
         return binding.getRoot();
     }
 

@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nomosoloapp.DBManager;
+import com.example.nomosoloapp.Message;
 import com.example.nomosoloapp.R;
 import com.example.nomosoloapp.User;
+
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class ChatFragment extends Fragment {
@@ -37,20 +40,20 @@ public class ChatFragment extends Fragment {
             userID = bundle.getString("userID");
         }
 
-        ArrayList<User> usersMatched = dbManager.getMatches(userID);
-
-        for(int i = 0; i < usersMatched.size(); i++){
-            User currUser = usersMatched.get(i);
-            chatList.add(currUser);
-        }
+//        ArrayList<User> usersMatched = dbManager.getMatches(userID);
+//
+//        for(int i = 0; i < usersMatched.size(); i++){
+//            User currUser = usersMatched.get(i);
+//            chatList.add(currUser);
+//        }
 
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
-        recyclerView = view.findViewById(R.id.chatListRecyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        ChatListAdapter adapter = new ChatListAdapter(chatList);
-        recyclerView.setAdapter(adapter);
+        try {
+            loadRecyclerView(view);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         return view;
     }
@@ -59,5 +62,22 @@ public class ChatFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         recyclerView = null;
+    }
+
+    private void loadRecyclerView(View view) throws ParseException {
+        ArrayList<Message> myTopMessage =  dbManager.getChatPeople(userID);
+        ArrayList<String> myNames = new ArrayList<>();
+        ArrayList<byte[]> myAvatars = new ArrayList<>();
+        for(int i = 0; i < myTopMessage.size(); i++){
+            User newUser = dbManager.getUserProfile(myTopMessage.get(i).getToUserId());
+            myNames.add(newUser.getFn() + " " + newUser.getLn());
+            myAvatars.add(newUser.getPhoto());
+        }
+
+        recyclerView = view.findViewById(R.id.chatListRecyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        ChatListAdapter adapter = new ChatListAdapter(myTopMessage, myNames, myAvatars);
+        recyclerView.setAdapter(adapter);
     }
 }

@@ -72,7 +72,7 @@ public class DBHelper extends SQLiteOpenHelper {
     static final String DB_NAME = "NoMoSolo.DB";
 
     // database version
-    static final int DB_VERSION = 4;
+    static final int DB_VERSION = 5;
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
