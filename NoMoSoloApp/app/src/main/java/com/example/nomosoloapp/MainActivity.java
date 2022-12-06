@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         resetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbManager.close();
+        //        dbManager.close();
                 startActivity(new Intent(MainActivity.this, ResetPassword01.class));
             }
         });
