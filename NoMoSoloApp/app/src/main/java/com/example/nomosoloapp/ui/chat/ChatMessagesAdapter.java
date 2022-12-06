@@ -57,7 +57,7 @@ public class ChatMessagesAdapter extends RecyclerView.Adapter<ChatMessagesAdapte
             holder.linearLayout.setLayoutParams(params);
 //            holder.linearLayout.setBackgroundColor(Color.parseColor("#d3d3d3"));
 
-            holder.chatUserName.setVisibility(View.INVISIBLE);
+            holder.chatUserName.setText("Me");
             holder.chatMessage.setText(myMessage.getMessage());
         } else {
             holder.chatUserName.setText(userName);

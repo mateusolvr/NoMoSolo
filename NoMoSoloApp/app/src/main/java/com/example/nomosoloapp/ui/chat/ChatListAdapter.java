@@ -77,7 +77,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                ChatMessages chatMessages = new ChatMessages(userToId, userName);
+                ChatMessages chatMessages = new ChatMessages(userToId, userName.split(" ")[0]);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.chat_constraint, chatMessages).addToBackStack(null).commit();
             }
         });

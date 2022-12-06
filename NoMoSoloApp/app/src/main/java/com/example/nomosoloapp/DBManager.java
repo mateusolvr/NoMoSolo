@@ -352,7 +352,7 @@ public class DBManager {
         contentValue.put(DBHelper.LASTNAME, "Veva");
         contentValue.put(DBHelper.EMAIL, "sibyl@gmail.com");
         salt = myPasswordHelper.getNewSalt();
-        encryptedPassword = myPasswordHelper.getEncryptedPassword("s", salt);
+        encryptedPassword = myPasswordHelper.getEncryptedPassword("Sibyl123!", salt);
         contentValue.put(DBHelper.PASSWORD, encryptedPassword);
         contentValue.put(DBHelper.SALT, salt);
         contentValue.put(DBHelper.PHONE, "1234567890");
@@ -490,7 +490,7 @@ public class DBManager {
         contentValue.clear();
         contentValue = new ContentValues();
         contentValue.put(DBHelper.ID, 4);
-        contentValue.put(DBHelper.BIO, "Hey, there");
+        contentValue.put(DBHelper.BIO, "Hey, It's Eustace!");
         contentValue.put(DBHelper.INSTRUMENT, "Vocal");
         contentValue.put(DBHelper.PHOTO, "");
         contentValue.put(DBHelper.SKILL_LEVEL, "Intermediate Enthusiast");
@@ -504,7 +504,7 @@ public class DBManager {
         contentValue.clear();
         contentValue = new ContentValues();
         contentValue.put(DBHelper.ID, 5);
-        contentValue.put(DBHelper.BIO, "Hey, there");
+        contentValue.put(DBHelper.BIO, "Hey, I'm Sibyl!");
         contentValue.put(DBHelper.INSTRUMENT, "Vocal");
         contentValue.put(DBHelper.PHOTO, "");
         contentValue.put(DBHelper.SKILL_LEVEL, "Intermediate Enthusiast");
@@ -518,7 +518,7 @@ public class DBManager {
         contentValue.clear();
         contentValue = new ContentValues();
         contentValue.put(DBHelper.ID, 6);
-        contentValue.put(DBHelper.BIO, "Hey, there");
+        contentValue.put(DBHelper.BIO, "Wassup it's Sanford ;)");
         contentValue.put(DBHelper.INSTRUMENT, "Vocal");
         contentValue.put(DBHelper.PHOTO, "");
         contentValue.put(DBHelper.SKILL_LEVEL, "Intermediate Enthusiast");

@@ -37,7 +37,6 @@ public class ChatMessages extends Fragment {
 //    private static FragmentChatMessagesBinding binding;
     private RecyclerView recyclerView;
     private ArrayList<Message> messages = new ArrayList<>();
-    private View myChatMessages;
     private String toUserId, toUserName, fromUserId;
     private static DBManager dbManager;
     private NestedScrollView myScrollView;
