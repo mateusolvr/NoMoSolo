@@ -55,7 +55,7 @@ public class ChatMessagesAdapter extends RecyclerView.Adapter<ChatMessagesAdapte
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.gravity = Gravity.RIGHT;
             holder.linearLayout.setLayoutParams(params);
-//            holder.linearLayout.setBackgroundColor(Color.parseColor("#d3d3d3"));
+            holder.chatUserName.setGravity(Gravity.RIGHT|Gravity.END);
 
             holder.chatUserName.setText("Me");
             holder.chatMessage.setText(myMessage.getMessage());
