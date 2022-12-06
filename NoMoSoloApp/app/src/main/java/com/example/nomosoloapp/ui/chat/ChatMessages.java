@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.nomosoloapp.DBManager;
@@ -38,6 +40,7 @@ public class ChatMessages extends Fragment {
     private View myChatMessages;
     private String toUserId, toUserName, fromUserId;
     private static DBManager dbManager;
+    private NestedScrollView myScrollView;
 
     public ChatMessages(String toUserId, String toUserName) {
         this.toUserId = toUserId;
@@ -92,11 +95,22 @@ public class ChatMessages extends Fragment {
     private void loadRecyclerView(View view) throws ParseException {
         messages = dbManager.getMessages(fromUserId, toUserId);
 
+
+
         recyclerView = view.findViewById(R.id.chatMessagesRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         ChatMessagesAdapter adapter = new ChatMessagesAdapter(messages, toUserName, fromUserId);
         recyclerView.setAdapter(adapter);
+
+        myScrollView = view.findViewById(R.id.scrollChatMessages);
+        myScrollView.scrollTo(0,myScrollView.getHeight());
+        myScrollView.post(new Runnable() {
+            @Override
+            public void run() {
+                myScrollView.fullScroll(View.FOCUS_DOWN);
+            }
+        });
     }
 
     private void sendMessageToChat(View view) throws ParseException {

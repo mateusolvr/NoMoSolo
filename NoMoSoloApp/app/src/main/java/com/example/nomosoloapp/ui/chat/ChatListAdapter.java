@@ -21,10 +21,12 @@ import java.util.ArrayList;
 public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHolder> {
     private ArrayList<Message> messages;
     private ArrayList<String> names;
+    private ArrayList<byte[]> myAvatars;
 
-    public ChatListAdapter(ArrayList<Message> messages, ArrayList<String> names) {
+    public ChatListAdapter(ArrayList<Message> messages, ArrayList<String> names, ArrayList<byte[]> myAvatars) {
         this.messages = messages;
         this.names = names;
+        this.myAvatars = myAvatars;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -63,10 +65,11 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
         String myMessage = messages.get(position).getMessage();
         String userName = names.get(position);
         String userToId = messages.get(position).getToUserId();
-//        if (myUser.getPhoto()[0] != 0) {
-//            Bitmap bmp = BitmapFactory.decodeByteArray(myUser.getPhoto(), 0, myUser.getPhoto().length);
-//            holder.getMatchAvatar().setImageBitmap(bmp);
-//        }
+        byte[] userPhoto = myAvatars.get(position);
+        if (userPhoto[0] != 0) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(userPhoto, 0, userPhoto.length);
+            holder.getMatchAvatar().setImageBitmap(bmp);
+        }
         holder.getMatchName().setText(userName);
         holder.getTopMessage().setText(myMessage);
 

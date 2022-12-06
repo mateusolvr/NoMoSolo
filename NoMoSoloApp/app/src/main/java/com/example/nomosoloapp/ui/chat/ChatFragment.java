@@ -67,15 +67,17 @@ public class ChatFragment extends Fragment {
     private void loadRecyclerView(View view) throws ParseException {
         ArrayList<Message> myTopMessage =  dbManager.getChatPeople(userID);
         ArrayList<String> myNames = new ArrayList<>();
+        ArrayList<byte[]> myAvatars = new ArrayList<>();
         for(int i = 0; i < myTopMessage.size(); i++){
             User newUser = dbManager.getUserProfile(myTopMessage.get(i).getToUserId());
             myNames.add(newUser.getFn() + " " + newUser.getLn());
+            myAvatars.add(newUser.getPhoto());
         }
 
         recyclerView = view.findViewById(R.id.chatListRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        ChatListAdapter adapter = new ChatListAdapter(myTopMessage, myNames);
+        ChatListAdapter adapter = new ChatListAdapter(myTopMessage, myNames, myAvatars);
         recyclerView.setAdapter(adapter);
     }
 }

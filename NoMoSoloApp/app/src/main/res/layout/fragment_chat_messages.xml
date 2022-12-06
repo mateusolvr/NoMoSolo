@@ -9,13 +9,14 @@
     android:background="@color/graphite"
     android:layout_marginBottom="56dp">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollChatMessages"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
+        android:paddingBottom="80dp"
         android:scrollbarSize="0dp"
         android:scrollbarStyle="outsideOverlay"
         android:isScrollContainer="true"
@@ -36,13 +37,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
     <LinearLayout
         android:id="@+id/chatInputContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:background="@color/graphite"
         app:layout_constraintBottom_toBottomOf="@id/chat_constraint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

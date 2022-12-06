@@ -211,7 +211,7 @@ public class DBManager {
     public ArrayList<Message> getMessages(String userFromId, String userToId) throws ParseException {
 
         String[] columns = new String[]{DBHelper.FROM_USER, DBHelper.TO_USER, DBHelper.MESSAGE, DBHelper.DATE};
-        Cursor cursor = database.query(DBHelper.MUSICIAN_MESSAGES_TABLE, columns, "(" + DBHelper.FROM_USER + " = ? AND " + DBHelper.TO_USER + " = ? ) OR " + "(" + DBHelper.TO_USER + " = ? AND " + DBHelper.FROM_USER + " = ? )", new String[]{userFromId, userToId, userToId, userFromId}, null, null, DBHelper.DATE);
+        Cursor cursor = database.query(DBHelper.MUSICIAN_MESSAGES_TABLE, columns, "(" + DBHelper.FROM_USER + " = ? AND " + DBHelper.TO_USER + " = ? ) OR " + "(" + DBHelper.TO_USER + " = ? AND " + DBHelper.FROM_USER + " = ? )", new String[]{userFromId, userToId, userFromId, userToId}, null, null, DBHelper.DATE);
 
         ArrayList<Message> messages = new ArrayList<>();
 
