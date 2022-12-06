@@ -54,7 +54,7 @@ public class MatchProfile extends Fragment {
         final Button sendMessageBtn = binding.sendMessageBtn;
         sendMessageBtn.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
-            ChatMessages chatMessages = new ChatMessages();
+            ChatMessages chatMessages = new ChatMessages(user.getId(), user.getFn());
             activity.getSupportFragmentManager().beginTransaction().replace(R.id.match_profile_constraint, chatMessages).addToBackStack(null).commit();
         });
 

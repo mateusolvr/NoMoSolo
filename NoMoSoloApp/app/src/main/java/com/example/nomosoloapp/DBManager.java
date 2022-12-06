@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
@@ -152,7 +153,7 @@ public class DBManager {
         String seekingGenre = cursor.getString(2);
 
         String[] columns2 = new String[]{DBHelper.ID};
-        Cursor cursor2 = database.query(DBHelper.MUSICIAN_INFO_TABLE, columns2, DBHelper.INSTRUMENT + " = ? AND " + DBHelper.SKILL_LEVEL + " = ? AND (" + DBHelper.GENRE1  + " = ? OR " + DBHelper.GENRE2 + " = ? )", new String[]{seekingInstrument, seekingLevel, seekingGenre, seekingGenre}, null, null, null);
+        Cursor cursor2 = database.query(DBHelper.MUSICIAN_INFO_TABLE, columns2, DBHelper.INSTRUMENT + " = ? AND " + DBHelper.SKILL_LEVEL + " = ? AND (" + DBHelper.GENRE1 + " = ? OR " + DBHelper.GENRE2 + " = ? )", new String[]{seekingInstrument, seekingLevel, seekingGenre, seekingGenre}, null, null, null);
 
         ArrayList<User> usersMatched = new ArrayList<>();
 
@@ -193,7 +194,7 @@ public class DBManager {
     public ArrayList<Note> getNotes(String userID) throws ParseException {
 
         String[] columns = new String[]{DBHelper.ID, DBHelper.NOTE, DBHelper.NOTE_DATE};
-        Cursor cursor = database.query(DBHelper.MUSICIAN_NOTES_TABLE, columns, DBHelper.USER_ID + " = ? AND " + DBHelper.DELETED + " = 0 " , new String[]{userID}, null, null, DBHelper.NOTE_DATE);
+        Cursor cursor = database.query(DBHelper.MUSICIAN_NOTES_TABLE, columns, DBHelper.USER_ID + " = ? AND " + DBHelper.DELETED + " = 0 ", new String[]{userID}, null, null, DBHelper.NOTE_DATE);
 
         ArrayList<Note> notes = new ArrayList<>();
 
@@ -205,6 +206,64 @@ public class DBManager {
             }
         }
         return notes;
+    }
+
+    public ArrayList<Message> getMessages(String userFromId, String userToId) throws ParseException {
+
+        String[] columns = new String[]{DBHelper.FROM_USER, DBHelper.TO_USER, DBHelper.MESSAGE, DBHelper.DATE};
+        Cursor cursor = database.query(DBHelper.MUSICIAN_MESSAGES_TABLE, columns, "(" + DBHelper.FROM_USER + " = ? AND " + DBHelper.TO_USER + " = ? ) OR " + "(" + DBHelper.TO_USER + " = ? AND " + DBHelper.FROM_USER + " = ? )", new String[]{userFromId, userToId, userToId, userFromId}, null, null, DBHelper.DATE);
+
+        ArrayList<Message> messages = new ArrayList<>();
+
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                Date messageDate = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").parse(cursor.getString(3));
+                Message myNewMessage = new Message(cursor.getString(0), cursor.getString(1), cursor.getString(2), messageDate);
+                messages.add(myNewMessage);
+            }
+        }
+        return messages;
+    }
+
+    public ArrayList<Message> getChatPeople(String userFromId) throws ParseException {
+
+        String[] columns = new String[]{DBHelper.FROM_USER, DBHelper.TO_USER, DBHelper.MESSAGE, DBHelper.DATE};
+        Cursor cursor = database.query(DBHelper.MUSICIAN_MESSAGES_TABLE, columns, DBHelper.FROM_USER + " = ? OR " + DBHelper.TO_USER + " = ? ", new String[]{userFromId, userFromId}, null, null, DBHelper.DATE+" DESC");
+
+        ArrayList<Message> messages = new ArrayList<>();
+        ArrayList<String> myIds = new ArrayList<>();
+
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                String fromUserId = cursor.getString(0);
+                String toUserId = cursor.getString(1);
+                String otherPersonId = "";
+
+                if (fromUserId.equals(userFromId)){
+                    otherPersonId = toUserId;
+                } else {
+                    otherPersonId = fromUserId;
+                }
+
+                if(!myIds.contains(otherPersonId)){
+                    Message newMessage = new Message(fromUserId, otherPersonId, cursor.getString(2));
+                    messages.add(newMessage);
+                    myIds.add(otherPersonId);
+                }
+            }
+        }
+        return messages;
+    }
+
+
+    public void insertMessage(String userFromId, String userToId, String message, String date) {
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DBHelper.FROM_USER, userFromId);
+        contentValue.put(DBHelper.TO_USER, userToId);
+        contentValue.put(DBHelper.MESSAGE, message);
+        contentValue.put(DBHelper.NOTE_DATE, date);
+
+        database.insert(DBHelper.MUSICIAN_MESSAGES_TABLE, null, contentValue);
     }
 
     public void deleteNote(String noteId) {

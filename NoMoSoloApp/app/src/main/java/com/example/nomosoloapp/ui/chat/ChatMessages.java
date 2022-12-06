@@ -1,7 +1,10 @@
 package com.example.nomosoloapp.ui.chat;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,18 +13,35 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.example.nomosoloapp.DBManager;
 import com.example.nomosoloapp.Message;
 import com.example.nomosoloapp.R;
+import com.example.nomosoloapp.databinding.FragmentCalendarBinding;
+import com.example.nomosoloapp.databinding.FragmentChatMessagesBinding;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ChatMessages extends Fragment {
 
+//    private static FragmentChatMessagesBinding binding;
     private RecyclerView recyclerView;
-    ArrayList<Message> messages = new ArrayList<>();
+    private ArrayList<Message> messages = new ArrayList<>();
+    private View myChatMessages;
+    private String toUserId, toUserName, fromUserId;
+    private static DBManager dbManager;
 
-    public ChatMessages() {
+    public ChatMessages(String toUserId, String toUserName) {
+        this.toUserId = toUserId;
+        this.toUserName = toUserName;
     }
 
     @Override
@@ -35,16 +55,57 @@ public class ChatMessages extends Fragment {
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
-        View view = inflater.inflate(R.layout.fragment_chat_messages, container, false);
+//        binding = FragmentChatMessagesBinding.inflate(inflater, container, false);
+        View myChatMessages = inflater.inflate(R.layout.fragment_chat_messages, container, false);
+        dbManager = new DBManager(getContext());
+        dbManager.open();
 
-        messages.add(new Message("From", "To", "Hello"));
+        Intent intent = requireActivity().getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            fromUserId = bundle.getString("userID");
+        }
+
+        try {
+            loadRecyclerView(myChatMessages);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+//        LinearLayout sendMessage = binding.sendMessage;
+        LinearLayout sendMessage = (LinearLayout) myChatMessages.findViewById(R.id.sendMessage);
+        sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    sendMessageToChat(myChatMessages);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        return myChatMessages;
+    }
+
+    private void loadRecyclerView(View view) throws ParseException {
+        messages = dbManager.getMessages(fromUserId, toUserId);
 
         recyclerView = view.findViewById(R.id.chatMessagesRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        ChatMessagesAdapter adapter = new ChatMessagesAdapter(messages);
+        ChatMessagesAdapter adapter = new ChatMessagesAdapter(messages, toUserName, fromUserId);
         recyclerView.setAdapter(adapter);
+    }
 
-        return view;
+    private void sendMessageToChat(View view) throws ParseException {
+        EditText myInput = view.findViewById(R.id.sendMessageInput);
+        String currMessage = myInput.getText().toString();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date();
+        dbManager.insertMessage(fromUserId, toUserId, currMessage, formatter.format(date));
+        myInput.setText("");
+        loadRecyclerView(view);
     }
 }

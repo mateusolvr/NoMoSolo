@@ -12,16 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nomosoloapp.Message;
 import com.example.nomosoloapp.R;
 import com.example.nomosoloapp.User;
 
 import java.util.ArrayList;
 
 public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHolder> {
-    private ArrayList<User> allChat;
+    private ArrayList<Message> messages;
+    private ArrayList<String> names;
 
-    public ChatListAdapter(ArrayList<User> data) {
-        this.allChat = data;
+    public ChatListAdapter(ArrayList<Message> messages, ArrayList<String> names) {
+        this.messages = messages;
+        this.names = names;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -57,21 +60,21 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        User myUser = allChat.get(position);
-        if (myUser.getPhoto()[0] != 0) {
-            Bitmap bmp = BitmapFactory.decodeByteArray(myUser.getPhoto(), 0, myUser.getPhoto().length);
-            holder.getMatchAvatar().setImageBitmap(bmp);
-        }
-        holder.getMatchName().setText(myUser.getFn() + " " + myUser.getLn());
-
-        //Backend change getInstrument to getTopMessage from convos
-        holder.getTopMessage().setText("Testing top message");
+        String myMessage = messages.get(position).getMessage();
+        String userName = names.get(position);
+        String userToId = messages.get(position).getToUserId();
+//        if (myUser.getPhoto()[0] != 0) {
+//            Bitmap bmp = BitmapFactory.decodeByteArray(myUser.getPhoto(), 0, myUser.getPhoto().length);
+//            holder.getMatchAvatar().setImageBitmap(bmp);
+//        }
+        holder.getMatchName().setText(userName);
+        holder.getTopMessage().setText(myMessage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                ChatMessages chatMessages = new ChatMessages();
+                ChatMessages chatMessages = new ChatMessages(userToId, userName);
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.chat_constraint, chatMessages).addToBackStack(null).commit();
             }
         });
@@ -79,6 +82,6 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return allChat.size();
+        return messages.size();
     }
 }
